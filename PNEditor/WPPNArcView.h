@@ -12,6 +12,7 @@ public:
     // Overrides
     virtual CDiagramEntity* Clone();
     virtual void	Draw(CDC* dc, CRect rect);
+    static CDiagramEntity* CreateFromString(const CString& str);
 
 };
 

@@ -37,3 +37,17 @@ BOOL CWPPNArcModel::CanConnectDestination(CProMoModel* destination)
 
 	return TRUE;
 }
+
+CProMoModel* CWPPNArcModel::CreateFromString(const CString& str)
+{
+
+	CWPPNArcModel* obj = new CWPPNArcModel;
+	if (!obj->FromString(str))
+	{
+		delete obj;
+		obj = NULL;
+	}
+
+	return obj;
+
+}

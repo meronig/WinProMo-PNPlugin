@@ -13,6 +13,9 @@ public:
 
     virtual void Draw(CDC* dc, CRect rect);
 
+    static CDiagramEntity* CreateFromString(const CString& str);
+
+
 };
 
 #endif //_WPPNTRANSVIEW_H_

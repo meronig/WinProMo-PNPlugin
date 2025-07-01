@@ -60,3 +60,17 @@ void CWPPNArcView::Draw(CDC* dc, CRect rect)
 
 	}
 }
+
+CDiagramEntity* CWPPNArcView::CreateFromString(const CString& str)
+{
+
+	CWPPNArcView* obj = new CWPPNArcView;
+	if (!obj->FromString(str))
+	{
+		delete obj;
+		obj = NULL;
+	}
+
+	return obj;
+
+}

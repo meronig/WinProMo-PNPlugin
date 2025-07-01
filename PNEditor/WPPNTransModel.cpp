@@ -16,3 +16,17 @@ BOOL CWPPNTransModel::CanBeNested(CProMoBlockModel* block)
 {
 	return FALSE;
 }
+
+CProMoModel* CWPPNTransModel::CreateFromString(const CString& str)
+{
+
+	CWPPNTransModel* obj = new CWPPNTransModel;
+	if (!obj->FromString(str))
+	{
+		delete obj;
+		obj = NULL;
+	}
+
+	return obj;
+
+}

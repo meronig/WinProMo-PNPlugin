@@ -26,3 +26,17 @@ BOOL CWPPNPlaceModel::CanBeNested(CProMoBlockModel* block)
 {
 	return FALSE;
 }
+
+CProMoModel* CWPPNPlaceModel::CreateFromString(const CString& str)
+{
+
+	CWPPNPlaceModel* obj = new CWPPNPlaceModel;
+	if (!obj->FromString(str))
+	{
+		delete obj;
+		obj = NULL;
+	}
+
+	return obj;
+
+}

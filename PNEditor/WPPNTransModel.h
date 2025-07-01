@@ -11,6 +11,8 @@ public:
     //Overrides
     virtual CProMoModel* Clone();
     virtual BOOL CanBeNested(CProMoBlockModel* block);
+    static	CProMoModel* CreateFromString(const CString& str);
+
 };
 
 #endif _WPPNTRANSMODEL_H_

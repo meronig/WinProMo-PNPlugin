@@ -12,7 +12,10 @@ protected: // create from serialization only
 public:
     CWPPNDoc();
     virtual ~CWPPNDoc();
+
+    virtual void CreateControlFactory();
     virtual void CreateContainer();
+
 
 };
 

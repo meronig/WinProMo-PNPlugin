@@ -13,6 +13,8 @@ public:
     virtual CProMoModel* Clone();
     virtual BOOL CanConnectSource(CProMoModel* source);
     virtual BOOL CanConnectDestination(CProMoModel* destination);
+    static	CProMoModel* CreateFromString(const CString& str);
+
 };
 
 #endif //_WPPNARCMODEL_H_

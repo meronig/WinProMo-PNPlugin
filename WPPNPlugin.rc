@@ -122,7 +122,7 @@ END
 
 STRINGTABLE
 BEGIN
-    IDR_WPPNPLUGIN          "\nPetriNet\nPetri Net\n\n\nPetriNet.Document\nPetri Net"
+    IDR_WPPNPLUGIN          "\nPetriNet\nPetri Net\nWinProMo Document (*.wpd)\n.wpd\nPetriNet.Document\nPetri Net"
 END
 
 STRINGTABLE

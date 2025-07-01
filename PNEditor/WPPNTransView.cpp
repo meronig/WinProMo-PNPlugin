@@ -61,3 +61,17 @@ void CWPPNTransView::Draw(CDC* dc, CRect rect)
 	dc->SelectStockObject(DEFAULT_GUI_FONT);
 	dc->SetBkMode(mode);
 }
+
+CDiagramEntity* CWPPNTransView::CreateFromString(const CString& str)
+{
+
+	CWPPNTransView* obj = new CWPPNTransView;
+	if (!obj->FromString(str))
+	{
+		delete obj;
+		obj = NULL;
+	}
+
+	return obj;
+
+}

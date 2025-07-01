@@ -12,7 +12,9 @@ public:
     virtual CDiagramEntity* Clone();
     virtual void Draw(CDC* dc, CRect rect);
     
-protected:
+    static CDiagramEntity* CreateFromString(const CString& str);
+
+protected:    
     virtual CPoint GetIntersection(CPoint innerPoint, CPoint outerPoint);
 
 };

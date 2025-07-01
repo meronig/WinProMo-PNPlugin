@@ -13,6 +13,7 @@ public:
     //Overrides
     virtual CProMoModel* Clone();
     virtual BOOL CanBeNested(CProMoBlockModel* block);
+    static	CProMoModel* CreateFromString(const CString& str);
 
 private:
     UINT m_marking;

@@ -152,3 +152,18 @@ CPoint CWPPNPlaceView::GetIntersection(CPoint innerPoint, CPoint outerPoint)
 
     return CPoint(static_cast<int>(xi + 0.5), static_cast<int>(yi + 0.5));
 }
+
+
+CDiagramEntity* CWPPNPlaceView::CreateFromString(const CString& str)
+{
+
+    CWPPNPlaceView* obj = new CWPPNPlaceView;
+    if (!obj->FromString(str))
+    {
+        delete obj;
+        obj = NULL;
+    }
+
+    return obj;
+
+}
