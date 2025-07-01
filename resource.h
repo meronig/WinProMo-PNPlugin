@@ -8,9 +8,9 @@
 #define IDI_ICON_TRANS                  301
 #define IDI_ICON_PLACE                  302
 #define IDI_ICON_ARC                    303
-#define ID_INSERT_PLACE                 2000
-#define ID_INSERT_TRANS                 2001
-#define ID_INSERT_ARC                   2002
+#define ID_INSERT_PLACE                 3000
+#define ID_INSERT_TRANS                 3001
+#define ID_INSERT_ARC                   3002
 
 // Next default values for new objects
 // 
