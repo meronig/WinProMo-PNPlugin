@@ -6,6 +6,10 @@ CWPPNTransModel::CWPPNTransModel()
 	SetType(_T("pn_trans_model"));
 }
 
+CWPPNTransModel::~CWPPNTransModel()
+{
+}
+
 CProMoModel* CWPPNTransModel::Clone()
 {
 	CWPPNTransModel* obj = new CWPPNTransModel;

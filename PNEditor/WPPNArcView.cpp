@@ -9,6 +9,10 @@ CWPPNArcView::CWPPNArcView()
 	SetModel(new CWPPNArcModel());
 }
 
+CWPPNArcView::~CWPPNArcView()
+{
+}
+
 CDiagramEntity* CWPPNArcView::Clone()
 {
 	CWPPNArcView* obj = new CWPPNArcView;

@@ -10,6 +10,9 @@ public:
 	CWPPNEditor();
 	virtual ~CWPPNEditor();
 
+// Overrides
+protected:
+	virtual CObArray* GetProperties(CDiagramEntity* element);
 };
 
 #endif

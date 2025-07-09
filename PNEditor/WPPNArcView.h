@@ -8,6 +8,7 @@ class AFX_EXT_CLASS CWPPNArcView :
 {
 public:
     CWPPNArcView();
+    virtual ~CWPPNArcView();
     
     // Overrides
     virtual CDiagramEntity* Clone();

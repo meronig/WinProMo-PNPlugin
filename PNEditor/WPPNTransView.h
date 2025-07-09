@@ -2,11 +2,13 @@
 #define _WPPNTRANSVIEW_H_
 
 #include "..\..\WinProMo\ProMoEditor\ProMoBlockView.h"
+
 class AFX_EXT_CLASS CWPPNTransView :
     public CProMoBlockView
 {
 public:
     CWPPNTransView();
+    virtual ~CWPPNTransView();
 
     // Overrides
     virtual CDiagramEntity* Clone();
@@ -14,7 +16,7 @@ public:
     virtual void Draw(CDC* dc, CRect rect);
 
     static CDiagramEntity* CreateFromString(const CString& str);
-
+    virtual void	SetTitle(CString title);
 
 };
 

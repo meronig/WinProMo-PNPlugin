@@ -7,6 +7,7 @@ class AFX_EXT_CLASS CWPPNTransModel :
 {
 public:
     CWPPNTransModel();
+    virtual ~CWPPNTransModel();
 
     //Overrides
     virtual CProMoModel* Clone();

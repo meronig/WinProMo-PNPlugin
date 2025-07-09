@@ -4,13 +4,36 @@
 CWPPNArcModel::CWPPNArcModel()
 {
 	SetType(_T("pn_arc_model"));
+	m_weight = 1;
+}
 
+CWPPNArcModel::~CWPPNArcModel()
+{
+}
+
+UINT CWPPNArcModel::GetWeight()
+{
+	return m_weight;
+}
+
+void CWPPNArcModel::SetWeight(UINT weight)
+{
+	m_weight = weight;
 }
 
 CProMoModel* CWPPNArcModel::Clone()
 {
 	CWPPNArcModel* obj = new CWPPNArcModel;
 	return obj;
+}
+
+void CWPPNArcModel::Copy(CProMoModel* obj)
+{
+	CProMoEdgeModel::Copy(obj);
+	CWPPNArcModel* objModel = dynamic_cast<CWPPNArcModel*>(obj);
+	if (objModel) {
+		SetWeight(objModel->GetWeight());
+	}
 }
 
 BOOL CWPPNArcModel::CanConnectSource(CProMoModel* source)

@@ -12,6 +12,10 @@ CWPPNPlaceView::CWPPNPlaceView()
     SetLockedProportions(TRUE);
 }
 
+CWPPNPlaceView::~CWPPNPlaceView()
+{
+}
+
 CDiagramEntity* CWPPNPlaceView::Clone()
 {
 	CWPPNPlaceView* obj = new CWPPNPlaceView;
@@ -46,12 +50,11 @@ void CWPPNPlaceView::Draw(CDC* dc, CRect rect)
 	dc->SelectObject(&font);
 	int mode = dc->SetBkMode(TRANSPARENT);
 
-    CRect textBounds(0, 0, 0, 0);
-    dc->DrawText(str, &textBounds, DT_NOPREFIX | DT_SINGLELINE | DT_TOP | DT_CALCRECT);
-
+    CRect textBounds = ComputeTextRect(str, font);
+    
     CRect titleRect;
-    int textWidth = textBounds.Width();
-    int textHeight = textBounds.Height();
+    double textWidth = textBounds.Width();
+    double textHeight = textBounds.Height();
     int ellipseCenterX = rect.left + rect.Width() / 2;
 
     titleRect.left = ellipseCenterX - textWidth / 2;
@@ -60,6 +63,15 @@ void CWPPNPlaceView::Draw(CDC* dc, CRect rect)
     titleRect.bottom = titleRect.top + textHeight;
 
     dc->DrawText(str, &titleRect, DT_NOPREFIX | DT_SINGLELINE | DT_TOP);
+
+    UINT marking = GetMarking();
+    
+    if (marking > 0) {
+
+        str.Format(_T("%u"), marking);
+        dc->DrawText(str, rect, DT_NOPREFIX | DT_SINGLELINE | DT_VCENTER | DT_CENTER);
+
+    }
 
 	dc->SelectStockObject(DEFAULT_GUI_FONT);
 	dc->SetBkMode(mode);
@@ -153,6 +165,84 @@ CPoint CWPPNPlaceView::GetIntersection(CPoint innerPoint, CPoint outerPoint)
     return CPoint(static_cast<int>(xi + 0.5), static_cast<int>(yi + 0.5));
 }
 
+void CWPPNPlaceView::ComputeMinimumSize()
+{
+    UINT marking = GetMarking();
+
+    if (marking > 0) {
+
+        CString str;
+        str.Format(_T("%u"), GetMarking());
+
+        CFont font;
+        font.CreateFont(-round(12.0 * GetZoom()), 0, 0, 0, FW_NORMAL, 0, 0, 0, 0, 0, 0, 0, 0, _T("Courier New"));
+        CRect textBounds = ComputeTextRect(str, font);
+
+        CSize minSize = GetMinimumSize();
+
+        double oldWidth = GetRect().Width();
+        double oldHeight = GetRect().Height();
+        double textWidth = textBounds.Width();
+        double textHeight = textBounds.Height();
+
+        double deltaX;
+        double deltaY;
+
+        if (HasLockedProportions()) {
+            double oldRatio = oldHeight / oldWidth;
+            deltaX = (textWidth + 4 - oldWidth) * oldRatio;
+            deltaY = (textHeight + 4 - oldHeight) / oldRatio;
+
+            if (deltaX > deltaY) {
+                deltaY = deltaX / oldRatio;
+            }
+            else {
+                deltaX = deltaY * oldRatio;
+            }
+        }
+        else {
+            deltaX = textWidth + 4 - oldWidth;
+            deltaY = textHeight + 4 - oldHeight;
+        }
+
+        if (deltaX > 0) {
+            SetRight(GetLeft() + oldWidth + deltaX);
+        }
+
+        if (deltaY > 0) {
+            SetBottom(GetTop() + oldHeight + deltaY);
+        }
+
+        minSize.cx = max(32, oldWidth + deltaX);
+        minSize.cy = max(32, oldHeight + deltaX);
+
+        SetMinimumSize(minSize);
+
+    }
+}
+
+UINT CWPPNPlaceView::GetMarking() 
+{
+    CWPPNPlaceModel* model = dynamic_cast<CWPPNPlaceModel*>(GetModel());
+    if (model) {
+        return model->GetMarking();
+    }
+    return 0;
+}
+
+void CWPPNPlaceView::SetMarking(UINT marking) 
+{
+    CWPPNPlaceModel* model = dynamic_cast<CWPPNPlaceModel*>(GetModel());
+    if (model) {
+        model->SetMarking(marking);
+        ComputeMinimumSize();
+    }
+}
+
+void CWPPNPlaceView::SetModel(CProMoBlockModel* model) {
+    CProMoBlockView::SetModel(model);
+    ComputeMinimumSize();
+}
 
 CDiagramEntity* CWPPNPlaceView::CreateFromString(const CString& str)
 {

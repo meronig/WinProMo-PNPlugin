@@ -34,9 +34,9 @@ NULL=nul
 ################################################################################
 # Begin Project
 # PROP Target_Last_Scanned "WPPNPlugin - Win32 Debug"
+MTL=mktyplib.exe
 CPP=cl.exe
 RSC=rc.exe
-MTL=mktyplib.exe
 
 !IF  "$(CFG)" == "WPPNPlugin - Win32 Release"
 
@@ -56,24 +56,25 @@ INTDIR=.\Release
 ALL : "..\Release\WPPNPlugin.dll"
 
 CLEAN : 
+	-@erase "$(INTDIR)\StdAfx.obj"
+	-@erase "$(INTDIR)\WPPNArcModel.obj"
+	-@erase "$(INTDIR)\WPPNArcView.obj"
+	-@erase "$(INTDIR)\WPPNControlFactory.obj"
+	-@erase "$(INTDIR)\WPPNDoc.obj"
+	-@erase "$(INTDIR)\WPPNEditor.obj"
+	-@erase "$(INTDIR)\WPPNPlaceModel.obj"
+	-@erase "$(INTDIR)\WPPNPlaceView.obj"
+	-@erase "$(INTDIR)\WPPNPlugin.obj"
+	-@erase "$(INTDIR)\WPPNPlugin.pch"
+	-@erase "$(INTDIR)\WPPNPlugin.res"
+	-@erase "$(INTDIR)\WPPNPluginInterface.obj"
+	-@erase "$(INTDIR)\WPPNPropertyWrappers.obj"
+	-@erase "$(INTDIR)\WPPNTransModel.obj"
+	-@erase "$(INTDIR)\WPPNTransView.obj"
+	-@erase "$(INTDIR)\WPPNView.obj"
+	-@erase "$(OUTDIR)\WPPNPlugin.exp"
+	-@erase "$(OUTDIR)\WPPNPlugin.lib"
 	-@erase "..\Release\WPPNPlugin.dll"
-	-@erase ".\Release\StdAfx.obj"
-	-@erase ".\Release\WPPNArcModel.obj"
-	-@erase ".\Release\WPPNArcView.obj"
-	-@erase ".\Release\WPPNControlFactory.obj"
-	-@erase ".\Release\WPPNDoc.obj"
-	-@erase ".\Release\WPPNEditor.obj"
-	-@erase ".\Release\WPPNPlaceModel.obj"
-	-@erase ".\Release\WPPNPlaceView.obj"
-	-@erase ".\Release\WPPNPlugin.exp"
-	-@erase ".\Release\WPPNPlugin.lib"
-	-@erase ".\Release\WPPNPlugin.obj"
-	-@erase ".\Release\WPPNPlugin.pch"
-	-@erase ".\Release\WPPNPlugin.res"
-	-@erase ".\Release\WPPNPluginInterface.obj"
-	-@erase ".\Release\WPPNTransModel.obj"
-	-@erase ".\Release\WPPNTransView.obj"
-	-@erase ".\Release\WPPNView.obj"
 
 "$(OUTDIR)" :
     if not exist "$(OUTDIR)/$(NULL)" mkdir "$(OUTDIR)"
@@ -106,20 +107,21 @@ LINK32_FLAGS=../WinPromo/Debug/WinProMo.lib /nologo /base:0x14000000\
  /machine:I386 /out:"../Release/WPPNPlugin.dll"\
  /implib:"$(OUTDIR)/WPPNPlugin.lib" 
 LINK32_OBJS= \
-	".\Release\StdAfx.obj" \
-	".\Release\WPPNArcModel.obj" \
-	".\Release\WPPNArcView.obj" \
-	".\Release\WPPNControlFactory.obj" \
-	".\Release\WPPNDoc.obj" \
-	".\Release\WPPNEditor.obj" \
-	".\Release\WPPNPlaceModel.obj" \
-	".\Release\WPPNPlaceView.obj" \
-	".\Release\WPPNPlugin.obj" \
-	".\Release\WPPNPlugin.res" \
-	".\Release\WPPNPluginInterface.obj" \
-	".\Release\WPPNTransModel.obj" \
-	".\Release\WPPNTransView.obj" \
-	".\Release\WPPNView.obj"
+	"$(INTDIR)\StdAfx.obj" \
+	"$(INTDIR)\WPPNArcModel.obj" \
+	"$(INTDIR)\WPPNArcView.obj" \
+	"$(INTDIR)\WPPNControlFactory.obj" \
+	"$(INTDIR)\WPPNDoc.obj" \
+	"$(INTDIR)\WPPNEditor.obj" \
+	"$(INTDIR)\WPPNPlaceModel.obj" \
+	"$(INTDIR)\WPPNPlaceView.obj" \
+	"$(INTDIR)\WPPNPlugin.obj" \
+	"$(INTDIR)\WPPNPlugin.res" \
+	"$(INTDIR)\WPPNPluginInterface.obj" \
+	"$(INTDIR)\WPPNPropertyWrappers.obj" \
+	"$(INTDIR)\WPPNTransModel.obj" \
+	"$(INTDIR)\WPPNTransView.obj" \
+	"$(INTDIR)\WPPNView.obj"
 
 "..\Release\WPPNPlugin.dll" : "$(OUTDIR)" $(DEF_FILE) $(LINK32_OBJS)
     $(LINK32) @<<
@@ -144,28 +146,29 @@ INTDIR=.\Debug
 ALL : "..\Debug\WPPNPlugin.dll"
 
 CLEAN : 
+	-@erase "$(INTDIR)\StdAfx.obj"
+	-@erase "$(INTDIR)\vc40.idb"
+	-@erase "$(INTDIR)\vc40.pdb"
+	-@erase "$(INTDIR)\WPPNArcModel.obj"
+	-@erase "$(INTDIR)\WPPNArcView.obj"
+	-@erase "$(INTDIR)\WPPNControlFactory.obj"
+	-@erase "$(INTDIR)\WPPNDoc.obj"
+	-@erase "$(INTDIR)\WPPNEditor.obj"
+	-@erase "$(INTDIR)\WPPNPlaceModel.obj"
+	-@erase "$(INTDIR)\WPPNPlaceView.obj"
+	-@erase "$(INTDIR)\WPPNPlugin.obj"
+	-@erase "$(INTDIR)\WPPNPlugin.pch"
+	-@erase "$(INTDIR)\WPPNPlugin.res"
+	-@erase "$(INTDIR)\WPPNPluginInterface.obj"
+	-@erase "$(INTDIR)\WPPNPropertyWrappers.obj"
+	-@erase "$(INTDIR)\WPPNTransModel.obj"
+	-@erase "$(INTDIR)\WPPNTransView.obj"
+	-@erase "$(INTDIR)\WPPNView.obj"
+	-@erase "$(OUTDIR)\WPPNPlugin.exp"
+	-@erase "$(OUTDIR)\WPPNPlugin.lib"
+	-@erase "$(OUTDIR)\WPPNPlugin.pdb"
 	-@erase "..\Debug\WPPNPlugin.dll"
 	-@erase "..\Debug\WPPNPlugin.ilk"
-	-@erase ".\Debug\StdAfx.obj"
-	-@erase ".\Debug\vc40.idb"
-	-@erase ".\Debug\vc40.pdb"
-	-@erase ".\Debug\WPPNArcModel.obj"
-	-@erase ".\Debug\WPPNArcView.obj"
-	-@erase ".\Debug\WPPNControlFactory.obj"
-	-@erase ".\Debug\WPPNDoc.obj"
-	-@erase ".\Debug\WPPNEditor.obj"
-	-@erase ".\Debug\WPPNPlaceModel.obj"
-	-@erase ".\Debug\WPPNPlaceView.obj"
-	-@erase ".\Debug\WPPNPlugin.exp"
-	-@erase ".\Debug\WPPNPlugin.lib"
-	-@erase ".\Debug\WPPNPlugin.obj"
-	-@erase ".\Debug\WPPNPlugin.pch"
-	-@erase ".\Debug\WPPNPlugin.pdb"
-	-@erase ".\Debug\WPPNPlugin.res"
-	-@erase ".\Debug\WPPNPluginInterface.obj"
-	-@erase ".\Debug\WPPNTransModel.obj"
-	-@erase ".\Debug\WPPNTransView.obj"
-	-@erase ".\Debug\WPPNView.obj"
 
 "$(OUTDIR)" :
     if not exist "$(OUTDIR)/$(NULL)" mkdir "$(OUTDIR)"
@@ -199,20 +202,21 @@ LINK32_FLAGS=../WinPromo/Debug/WinProMo.lib /nologo /base:0x14000000\
  /machine:I386 /out:"../Debug/WPPNPlugin.dll" /implib:"$(OUTDIR)/WPPNPlugin.lib"\
  
 LINK32_OBJS= \
-	".\Debug\StdAfx.obj" \
-	".\Debug\WPPNArcModel.obj" \
-	".\Debug\WPPNArcView.obj" \
-	".\Debug\WPPNControlFactory.obj" \
-	".\Debug\WPPNDoc.obj" \
-	".\Debug\WPPNEditor.obj" \
-	".\Debug\WPPNPlaceModel.obj" \
-	".\Debug\WPPNPlaceView.obj" \
-	".\Debug\WPPNPlugin.obj" \
-	".\Debug\WPPNPlugin.res" \
-	".\Debug\WPPNPluginInterface.obj" \
-	".\Debug\WPPNTransModel.obj" \
-	".\Debug\WPPNTransView.obj" \
-	".\Debug\WPPNView.obj"
+	"$(INTDIR)\StdAfx.obj" \
+	"$(INTDIR)\WPPNArcModel.obj" \
+	"$(INTDIR)\WPPNArcView.obj" \
+	"$(INTDIR)\WPPNControlFactory.obj" \
+	"$(INTDIR)\WPPNDoc.obj" \
+	"$(INTDIR)\WPPNEditor.obj" \
+	"$(INTDIR)\WPPNPlaceModel.obj" \
+	"$(INTDIR)\WPPNPlaceView.obj" \
+	"$(INTDIR)\WPPNPlugin.obj" \
+	"$(INTDIR)\WPPNPlugin.res" \
+	"$(INTDIR)\WPPNPluginInterface.obj" \
+	"$(INTDIR)\WPPNPropertyWrappers.obj" \
+	"$(INTDIR)\WPPNTransModel.obj" \
+	"$(INTDIR)\WPPNTransView.obj" \
+	"$(INTDIR)\WPPNView.obj"
 
 "..\Debug\WPPNPlugin.dll" : "$(OUTDIR)" $(DEF_FILE) $(LINK32_OBJS)
     $(LINK32) @<<
@@ -278,21 +282,9 @@ DEP_CPP_WPPNP=\
 	".\WPPNPluginInterface.h"\
 	
 
-!IF  "$(CFG)" == "WPPNPlugin - Win32 Release"
+"$(INTDIR)\WPPNPlugin.obj" : $(SOURCE) $(DEP_CPP_WPPNP) "$(INTDIR)"\
+ "$(INTDIR)\WPPNPlugin.pch"
 
-
-".\Release\WPPNPlugin.obj" : $(SOURCE) $(DEP_CPP_WPPNP) "$(INTDIR)"\
- ".\Release\WPPNPlugin.pch"
-
-
-!ELSEIF  "$(CFG)" == "WPPNPlugin - Win32 Debug"
-
-
-".\Debug\WPPNPlugin.obj" : $(SOURCE) $(DEP_CPP_WPPNP) "$(INTDIR)"\
- ".\Debug\WPPNPlugin.pch"
-
-
-!ENDIF 
 
 # End Source File
 ################################################################################
@@ -313,10 +305,10 @@ BuildCmds= \
  /Fp"$(INTDIR)/WPPNPlugin.pch" /Yc"stdafx.h" /Fo"$(INTDIR)/" /c $(SOURCE) \
 	
 
-".\Release\StdAfx.obj" : $(SOURCE) $(DEP_CPP_STDAF) "$(INTDIR)"
+"$(INTDIR)\StdAfx.obj" : $(SOURCE) $(DEP_CPP_STDAF) "$(INTDIR)"
    $(BuildCmds)
 
-".\Release\WPPNPlugin.pch" : $(SOURCE) $(DEP_CPP_STDAF) "$(INTDIR)"
+"$(INTDIR)\WPPNPlugin.pch" : $(SOURCE) $(DEP_CPP_STDAF) "$(INTDIR)"
    $(BuildCmds)
 
 !ELSEIF  "$(CFG)" == "WPPNPlugin - Win32 Debug"
@@ -330,10 +322,10 @@ BuildCmds= \
  /Fo"$(INTDIR)/" /Fd"$(INTDIR)/" /c $(SOURCE) \
 	
 
-".\Debug\StdAfx.obj" : $(SOURCE) $(DEP_CPP_STDAF) "$(INTDIR)"
+"$(INTDIR)\StdAfx.obj" : $(SOURCE) $(DEP_CPP_STDAF) "$(INTDIR)"
    $(BuildCmds)
 
-".\Debug\WPPNPlugin.pch" : $(SOURCE) $(DEP_CPP_STDAF) "$(INTDIR)"
+"$(INTDIR)\WPPNPlugin.pch" : $(SOURCE) $(DEP_CPP_STDAF) "$(INTDIR)"
    $(BuildCmds)
 
 !ENDIF 
@@ -347,21 +339,9 @@ DEP_RSC_WPPNPL=\
 	".\res\WPPNPlugin.rc2"\
 	
 
-!IF  "$(CFG)" == "WPPNPlugin - Win32 Release"
-
-
-".\Release\WPPNPlugin.res" : $(SOURCE) $(DEP_RSC_WPPNPL) "$(INTDIR)"
+"$(INTDIR)\WPPNPlugin.res" : $(SOURCE) $(DEP_RSC_WPPNPL) "$(INTDIR)"
    $(RSC) $(RSC_PROJ) $(SOURCE)
 
-
-!ELSEIF  "$(CFG)" == "WPPNPlugin - Win32 Debug"
-
-
-".\Debug\WPPNPlugin.res" : $(SOURCE) $(DEP_RSC_WPPNPL) "$(INTDIR)"
-   $(RSC) $(RSC_PROJ) $(SOURCE)
-
-
-!ENDIF 
 
 # End Source File
 ################################################################################
@@ -400,21 +380,9 @@ DEP_CPP_WPPNV=\
 	".\WPPNView.h"\
 	
 
-!IF  "$(CFG)" == "WPPNPlugin - Win32 Release"
+"$(INTDIR)\WPPNView.obj" : $(SOURCE) $(DEP_CPP_WPPNV) "$(INTDIR)"\
+ "$(INTDIR)\WPPNPlugin.pch"
 
-
-".\Release\WPPNView.obj" : $(SOURCE) $(DEP_CPP_WPPNV) "$(INTDIR)"\
- ".\Release\WPPNPlugin.pch"
-
-
-!ELSEIF  "$(CFG)" == "WPPNPlugin - Win32 Debug"
-
-
-".\Debug\WPPNView.obj" : $(SOURCE) $(DEP_CPP_WPPNV) "$(INTDIR)"\
- ".\Debug\WPPNPlugin.pch"
-
-
-!ENDIF 
 
 # End Source File
 ################################################################################
@@ -454,21 +422,9 @@ DEP_CPP_WPPNPLU=\
 	".\WPPNView.h"\
 	
 
-!IF  "$(CFG)" == "WPPNPlugin - Win32 Release"
+"$(INTDIR)\WPPNPluginInterface.obj" : $(SOURCE) $(DEP_CPP_WPPNPLU) "$(INTDIR)"\
+ "$(INTDIR)\WPPNPlugin.pch"
 
-
-".\Release\WPPNPluginInterface.obj" : $(SOURCE) $(DEP_CPP_WPPNPLU) "$(INTDIR)"\
- ".\Release\WPPNPlugin.pch"
-
-
-!ELSEIF  "$(CFG)" == "WPPNPlugin - Win32 Debug"
-
-
-".\Debug\WPPNPluginInterface.obj" : $(SOURCE) $(DEP_CPP_WPPNPLU) "$(INTDIR)"\
- ".\Debug\WPPNPlugin.pch"
-
-
-!ENDIF 
 
 # End Source File
 ################################################################################
@@ -496,21 +452,9 @@ DEP_CPP_WPPND=\
 	".\WPPNDoc.h"\
 	
 
-!IF  "$(CFG)" == "WPPNPlugin - Win32 Release"
+"$(INTDIR)\WPPNDoc.obj" : $(SOURCE) $(DEP_CPP_WPPND) "$(INTDIR)"\
+ "$(INTDIR)\WPPNPlugin.pch"
 
-
-".\Release\WPPNDoc.obj" : $(SOURCE) $(DEP_CPP_WPPND) "$(INTDIR)"\
- ".\Release\WPPNPlugin.pch"
-
-
-!ELSEIF  "$(CFG)" == "WPPNPlugin - Win32 Debug"
-
-
-".\Debug\WPPNDoc.obj" : $(SOURCE) $(DEP_CPP_WPPND) "$(INTDIR)"\
- ".\Debug\WPPNPlugin.pch"
-
-
-!ENDIF 
 
 # End Source File
 ################################################################################
@@ -533,23 +477,10 @@ NODEP_CPP_WPPNT=\
 	".\PNEditor\StdAfx.h"\
 	
 
-!IF  "$(CFG)" == "WPPNPlugin - Win32 Release"
-
-
-".\Release\WPPNTransView.obj" : $(SOURCE) $(DEP_CPP_WPPNT) "$(INTDIR)"\
- ".\Release\WPPNPlugin.pch"
+"$(INTDIR)\WPPNTransView.obj" : $(SOURCE) $(DEP_CPP_WPPNT) "$(INTDIR)"\
+ "$(INTDIR)\WPPNPlugin.pch"
    $(CPP) $(CPP_PROJ) $(SOURCE)
 
-
-!ELSEIF  "$(CFG)" == "WPPNPlugin - Win32 Debug"
-
-
-".\Debug\WPPNTransView.obj" : $(SOURCE) $(DEP_CPP_WPPNT) "$(INTDIR)"\
- ".\Debug\WPPNPlugin.pch"
-   $(CPP) $(CPP_PROJ) $(SOURCE)
-
-
-!ENDIF 
 
 # End Source File
 ################################################################################
@@ -577,23 +508,10 @@ NODEP_CPP_WPPNA=\
 	".\PNEditor\StdAfx.h"\
 	
 
-!IF  "$(CFG)" == "WPPNPlugin - Win32 Release"
-
-
-".\Release\WPPNArcView.obj" : $(SOURCE) $(DEP_CPP_WPPNA) "$(INTDIR)"\
- ".\Release\WPPNPlugin.pch"
+"$(INTDIR)\WPPNArcView.obj" : $(SOURCE) $(DEP_CPP_WPPNA) "$(INTDIR)"\
+ "$(INTDIR)\WPPNPlugin.pch"
    $(CPP) $(CPP_PROJ) $(SOURCE)
 
-
-!ELSEIF  "$(CFG)" == "WPPNPlugin - Win32 Debug"
-
-
-".\Debug\WPPNArcView.obj" : $(SOURCE) $(DEP_CPP_WPPNA) "$(INTDIR)"\
- ".\Debug\WPPNPlugin.pch"
-   $(CPP) $(CPP_PROJ) $(SOURCE)
-
-
-!ENDIF 
 
 # End Source File
 ################################################################################
@@ -614,34 +532,30 @@ DEP_CPP_WPPNE=\
 	"..\WinProMo\ProMoEditor\ProMoControlFactory.h"\
 	"..\WinProMo\ProMoEditor\ProMoModel.h"\
 	"..\WinProMo\ProMoEditor\PropertyDialog.h"\
+	"..\WinProMo\PropertyItem\PropertyItem.h"\
+	"..\WinProMo\PropertyItem\TypedPropertyItem.h"\
+	"..\WinProMo\PropertyItem\TypedPropertyItem.hxx"\
 	"..\WinProMo\StdAfx.h"\
 	".\PNEditor\..\..\WinProMo\ProMoEditor\ProMoBlockModel.h"\
 	".\PNEditor\..\..\WinProMo\ProMoEditor\ProMoBlockView.h"\
+	".\PNEditor\..\..\WinProMo\ProMoEditor\ProMoEdgeModel.h"\
 	".\PNEditor\..\..\WinProMo\ProMoEditor\ProMoEdgeView.h"\
 	".\PNEditor\..\..\WinProMo\ProMoEditor\ProMoEditor.h"\
+	".\PNEditor\WPPNArcModel.h"\
+	".\PNEditor\WPPNArcView.h"\
 	".\PNEditor\WPPNEditor.h"\
+	".\PNEditor\WPPNPlaceModel.h"\
+	".\PNEditor\WPPNPlaceView.h"\
+	".\PNEditor\WPPNPropertyWrappers.h"\
 	
 NODEP_CPP_WPPNE=\
 	".\PNEditor\StdAfx.h"\
 	
 
-!IF  "$(CFG)" == "WPPNPlugin - Win32 Release"
-
-
-".\Release\WPPNEditor.obj" : $(SOURCE) $(DEP_CPP_WPPNE) "$(INTDIR)"\
- ".\Release\WPPNPlugin.pch"
+"$(INTDIR)\WPPNEditor.obj" : $(SOURCE) $(DEP_CPP_WPPNE) "$(INTDIR)"\
+ "$(INTDIR)\WPPNPlugin.pch"
    $(CPP) $(CPP_PROJ) $(SOURCE)
 
-
-!ELSEIF  "$(CFG)" == "WPPNPlugin - Win32 Debug"
-
-
-".\Debug\WPPNEditor.obj" : $(SOURCE) $(DEP_CPP_WPPNE) "$(INTDIR)"\
- ".\Debug\WPPNPlugin.pch"
-   $(CPP) $(CPP_PROJ) $(SOURCE)
-
-
-!ENDIF 
 
 # End Source File
 ################################################################################
@@ -660,23 +574,10 @@ NODEP_CPP_WPPNPLA=\
 	".\PNEditor\StdAfx.h"\
 	
 
-!IF  "$(CFG)" == "WPPNPlugin - Win32 Release"
-
-
-".\Release\WPPNPlaceModel.obj" : $(SOURCE) $(DEP_CPP_WPPNPLA) "$(INTDIR)"\
- ".\Release\WPPNPlugin.pch"
+"$(INTDIR)\WPPNPlaceModel.obj" : $(SOURCE) $(DEP_CPP_WPPNPLA) "$(INTDIR)"\
+ "$(INTDIR)\WPPNPlugin.pch"
    $(CPP) $(CPP_PROJ) $(SOURCE)
 
-
-!ELSEIF  "$(CFG)" == "WPPNPlugin - Win32 Debug"
-
-
-".\Debug\WPPNPlaceModel.obj" : $(SOURCE) $(DEP_CPP_WPPNPLA) "$(INTDIR)"\
- ".\Debug\WPPNPlugin.pch"
-   $(CPP) $(CPP_PROJ) $(SOURCE)
-
-
-!ENDIF 
 
 # End Source File
 ################################################################################
@@ -699,23 +600,10 @@ NODEP_CPP_WPPNPLAC=\
 	".\PNEditor\StdAfx.h"\
 	
 
-!IF  "$(CFG)" == "WPPNPlugin - Win32 Release"
-
-
-".\Release\WPPNPlaceView.obj" : $(SOURCE) $(DEP_CPP_WPPNPLAC) "$(INTDIR)"\
- ".\Release\WPPNPlugin.pch"
+"$(INTDIR)\WPPNPlaceView.obj" : $(SOURCE) $(DEP_CPP_WPPNPLAC) "$(INTDIR)"\
+ "$(INTDIR)\WPPNPlugin.pch"
    $(CPP) $(CPP_PROJ) $(SOURCE)
 
-
-!ELSEIF  "$(CFG)" == "WPPNPlugin - Win32 Debug"
-
-
-".\Debug\WPPNPlaceView.obj" : $(SOURCE) $(DEP_CPP_WPPNPLAC) "$(INTDIR)"\
- ".\Debug\WPPNPlugin.pch"
-   $(CPP) $(CPP_PROJ) $(SOURCE)
-
-
-!ENDIF 
 
 # End Source File
 ################################################################################
@@ -734,23 +622,10 @@ NODEP_CPP_WPPNTR=\
 	".\PNEditor\StdAfx.h"\
 	
 
-!IF  "$(CFG)" == "WPPNPlugin - Win32 Release"
-
-
-".\Release\WPPNTransModel.obj" : $(SOURCE) $(DEP_CPP_WPPNTR) "$(INTDIR)"\
- ".\Release\WPPNPlugin.pch"
+"$(INTDIR)\WPPNTransModel.obj" : $(SOURCE) $(DEP_CPP_WPPNTR) "$(INTDIR)"\
+ "$(INTDIR)\WPPNPlugin.pch"
    $(CPP) $(CPP_PROJ) $(SOURCE)
 
-
-!ELSEIF  "$(CFG)" == "WPPNPlugin - Win32 Debug"
-
-
-".\Debug\WPPNTransModel.obj" : $(SOURCE) $(DEP_CPP_WPPNTR) "$(INTDIR)"\
- ".\Debug\WPPNPlugin.pch"
-   $(CPP) $(CPP_PROJ) $(SOURCE)
-
-
-!ENDIF 
 
 # End Source File
 ################################################################################
@@ -776,23 +651,10 @@ NODEP_CPP_WPPNAR=\
 	".\PNEditor\StdAfx.h"\
 	
 
-!IF  "$(CFG)" == "WPPNPlugin - Win32 Release"
-
-
-".\Release\WPPNArcModel.obj" : $(SOURCE) $(DEP_CPP_WPPNAR) "$(INTDIR)"\
- ".\Release\WPPNPlugin.pch"
+"$(INTDIR)\WPPNArcModel.obj" : $(SOURCE) $(DEP_CPP_WPPNAR) "$(INTDIR)"\
+ "$(INTDIR)\WPPNPlugin.pch"
    $(CPP) $(CPP_PROJ) $(SOURCE)
 
-
-!ELSEIF  "$(CFG)" == "WPPNPlugin - Win32 Debug"
-
-
-".\Debug\WPPNArcModel.obj" : $(SOURCE) $(DEP_CPP_WPPNAR) "$(INTDIR)"\
- ".\Debug\WPPNPlugin.pch"
-   $(CPP) $(CPP_PROJ) $(SOURCE)
-
-
-!ENDIF 
 
 # End Source File
 ################################################################################
@@ -825,23 +687,51 @@ NODEP_CPP_WPPNC=\
 	".\PNEditor\StdAfx.h"\
 	
 
-!IF  "$(CFG)" == "WPPNPlugin - Win32 Release"
-
-
-".\Release\WPPNControlFactory.obj" : $(SOURCE) $(DEP_CPP_WPPNC) "$(INTDIR)"\
- ".\Release\WPPNPlugin.pch"
+"$(INTDIR)\WPPNControlFactory.obj" : $(SOURCE) $(DEP_CPP_WPPNC) "$(INTDIR)"\
+ "$(INTDIR)\WPPNPlugin.pch"
    $(CPP) $(CPP_PROJ) $(SOURCE)
 
 
-!ELSEIF  "$(CFG)" == "WPPNPlugin - Win32 Debug"
+# End Source File
+################################################################################
+# Begin Source File
 
+SOURCE=.\PNEditor\WPPNPropertyWrappers.cpp
+DEP_CPP_WPPNPR=\
+	"..\WinProMo\DiagramEditor\DiagramClipboardHandler.h"\
+	"..\WinProMo\DiagramEditor\DiagramEditor.h"\
+	"..\WinProMo\DiagramEditor\DiagramEntity.h"\
+	"..\WinProMo\DiagramEditor\DiagramEntityContainer.h"\
+	"..\WinProMo\DiagramEditor\DiagramLine.h"\
+	"..\WinProMo\DiagramEditor\DiagramMenu.h"\
+	"..\WinProMo\DiagramEditor\DiagramPropertyDlg.h"\
+	"..\WinProMo\DiagramEditor\HitParams.h"\
+	"..\WinProMo\DiagramEditor\HitParamsRect.h"\
+	"..\WinProMo\DiagramEditor\UndoItem.h"\
+	"..\WinProMo\ProMoEditor\ProMoControlFactory.h"\
+	"..\WinProMo\ProMoEditor\ProMoModel.h"\
+	"..\WinProMo\ProMoEditor\PropertyDialog.h"\
+	"..\WinProMo\StdAfx.h"\
+	".\PNEditor\..\..\WinProMo\ProMoEditor\ProMoBlockModel.h"\
+	".\PNEditor\..\..\WinProMo\ProMoEditor\ProMoBlockView.h"\
+	".\PNEditor\..\..\WinProMo\ProMoEditor\ProMoEdgeModel.h"\
+	".\PNEditor\..\..\WinProMo\ProMoEditor\ProMoEdgeView.h"\
+	".\PNEditor\..\..\WinProMo\ProMoEditor\ProMoEditor.h"\
+	".\PNEditor\WPPNArcModel.h"\
+	".\PNEditor\WPPNArcView.h"\
+	".\PNEditor\WPPNEditor.h"\
+	".\PNEditor\WPPNPlaceModel.h"\
+	".\PNEditor\WPPNPlaceView.h"\
+	".\PNEditor\WPPNPropertyWrappers.h"\
+	
+NODEP_CPP_WPPNPR=\
+	".\PNEditor\StdAfx.h"\
+	
 
-".\Debug\WPPNControlFactory.obj" : $(SOURCE) $(DEP_CPP_WPPNC) "$(INTDIR)"\
- ".\Debug\WPPNPlugin.pch"
+"$(INTDIR)\WPPNPropertyWrappers.obj" : $(SOURCE) $(DEP_CPP_WPPNPR) "$(INTDIR)"\
+ "$(INTDIR)\WPPNPlugin.pch"
    $(CPP) $(CPP_PROJ) $(SOURCE)
 
-
-!ENDIF 
 
 # End Source File
 # End Target

@@ -4,6 +4,11 @@
 CWPPNPlaceModel::CWPPNPlaceModel()
 {
 	SetType(_T("pn_place_model"));
+	m_marking = 0;
+}
+
+CWPPNPlaceModel::~CWPPNPlaceModel()
+{
 }
 
 UINT CWPPNPlaceModel::GetMarking()
@@ -20,6 +25,16 @@ CProMoModel* CWPPNPlaceModel::Clone()
 {
 	CWPPNPlaceModel* obj = new CWPPNPlaceModel;
 	return obj;
+}
+
+void CWPPNPlaceModel::Copy(CProMoModel* obj) 
+{
+	CProMoBlockModel::Copy(obj);
+	CWPPNPlaceModel* objModel = dynamic_cast<CWPPNPlaceModel*>(obj);
+	if (objModel) {
+		SetMarking(objModel->GetMarking());
+	}
+	
 }
 
 BOOL CWPPNPlaceModel::CanBeNested(CProMoBlockModel* block)

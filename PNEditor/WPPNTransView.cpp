@@ -5,10 +5,14 @@
 
 CWPPNTransView::CWPPNTransView()
 {
-	SetConstraints(CSize(32, 32), CSize(-1, -1));
+	SetConstraints(CSize(50, 50), CSize(-1, -1));
 	SetType(_T("pn_trans_view"));
 	SetModel(new CWPPNTransModel());
 	SetLockedProportions(FALSE);
+}
+
+CWPPNTransView::~CWPPNTransView()
+{
 }
 
 CDiagramEntity* CWPPNTransView::Clone()
@@ -48,14 +52,6 @@ void CWPPNTransView::Draw(CDC* dc, CRect rect)
 	CRect textBounds(0, 0, 0, 0);
 	dc->DrawText(str, &textBounds, DT_NOPREFIX | DT_SINGLELINE | DT_TOP | DT_CALCRECT);
 
-	if (textBounds.Width() + 4 > GetRect().Width()) {
-		SetRight(GetLeft() + textBounds.Width() + 4);
-	}
-
-	if (textBounds.Height() + 4 > GetRect().Height()) {
-		SetLeft(GetTop() + textBounds.Height() + 4);
-	}
-	
 	dc->DrawText(str, rect, DT_NOPREFIX | DT_SINGLELINE | DT_VCENTER | DT_CENTER);
 	
 	dc->SelectStockObject(DEFAULT_GUI_FONT);
@@ -73,5 +69,29 @@ CDiagramEntity* CWPPNTransView::CreateFromString(const CString& str)
 	}
 
 	return obj;
+
+}
+
+void CWPPNTransView::SetTitle(CString title) 
+{
+	CFont font;
+	font.CreateFont(-round(12.0 * GetZoom()), 0, 0, 0, FW_NORMAL, 0, 0, 0, 0, 0, 0, 0, 0, _T("Courier New"));
+	CRect textBounds = ComputeTextRect(title, font);
+
+	CSize minSize = GetMinimumSize();
+	minSize.cx = max(32, textBounds.Width() + 4);
+	minSize.cy = max(32, textBounds.Height() + 4);
+
+	if (textBounds.Width() + 4 > GetRect().Width()) {
+		SetRight(GetLeft() + textBounds.Width() + 4);
+	}
+
+	if (textBounds.Height() + 4 > GetRect().Height()) {
+		SetLeft(GetTop() + textBounds.Height() + 4);
+	}
+
+	CDiagramEntity::SetTitle(title);
+
+	SetMinimumSize(minSize);
 
 }
