@@ -1,5 +1,6 @@
 #include "StdAfx.h"
 #include "WPPNTransModel.h"
+#include "../../WinProMo/DiagramEditor/Tokenizer.h"
 
 CWPPNTransModel::CWPPNTransModel()
 {

@@ -5,7 +5,7 @@
 
 CWPPNTransView::CWPPNTransView()
 {
-	SetConstraints(CSize(50, 50), CSize(-1, -1));
+	SetConstraints(CSize(32, 32), CSize(-1, -1));
 	SetType(_T("pn_trans_view"));
 	SetModel(new CWPPNTransModel());
 	SetLockedProportions(FALSE);
@@ -75,7 +75,11 @@ CDiagramEntity* CWPPNTransView::CreateFromString(const CString& str)
 void CWPPNTransView::SetTitle(CString title) 
 {
 	CFont font;
-	font.CreateFont(-round(12.0 * GetZoom()), 0, 0, 0, FW_NORMAL, 0, 0, 0, 0, 0, 0, 0, 0, _T("Courier New"));
+	double zoom = GetZoom();
+	if (zoom == 0) {
+		zoom = 1.0;
+	}
+	font.CreateFont(-round(12.0 * zoom), 0, 0, 0, FW_NORMAL, 0, 0, 0, 0, 0, 0, 0, 0, _T("Courier New"));
 	CRect textBounds = ComputeTextRect(title, font);
 
 	CSize minSize = GetMinimumSize();

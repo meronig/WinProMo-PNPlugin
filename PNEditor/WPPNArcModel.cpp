@@ -1,5 +1,6 @@
 #include "StdAfx.h"
 #include "WPPNArcModel.h"
+#include "../../WinProMo/DiagramEditor/Tokenizer.h"
 
 CWPPNArcModel::CWPPNArcModel()
 {
@@ -11,7 +12,7 @@ CWPPNArcModel::~CWPPNArcModel()
 {
 }
 
-UINT CWPPNArcModel::GetWeight()
+UINT CWPPNArcModel::GetWeight() const
 {
 	return m_weight;
 }
@@ -72,5 +73,52 @@ CProMoModel* CWPPNArcModel::CreateFromString(const CString& str)
 	}
 
 	return obj;
+
+}
+
+CString CWPPNArcModel::GetDefaultGetString() const
+{
+	CString result = CProMoEdgeModel::GetDefaultGetString();
+
+	CString str;
+
+	str.Format(_T(",%u"), GetWeight());
+
+	return result + str;
+}
+
+BOOL CWPPNArcModel::GetDefaultFromString(CString& str)
+{
+	BOOL result = CProMoEdgeModel::GetDefaultFromString(str);
+	if (result) {
+		result = FALSE;
+		CString data(str);
+		CTokenizer tok(data);
+		int size = tok.GetSize();
+		if (size >= 3)
+		{
+			CString name;
+			int weight;
+			int count = 2;
+
+			tok.GetAt(count++, weight);
+
+			SetWeight(weight);
+
+			// Rebuild rest of string
+			str = _T("");
+			for (int t = count; t < size; t++)
+			{
+				tok.GetAt(t, data);
+
+				str += data;
+				if (t < size - 1)
+					str += _T(",");
+			}
+
+			result = TRUE;
+		}
+	}
+	return result;
 
 }

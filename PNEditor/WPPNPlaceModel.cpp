@@ -1,5 +1,6 @@
 #include "StdAfx.h"
 #include "WPPNPlaceModel.h"
+#include "../../WinProMo/DiagramEditor/Tokenizer.h"
 
 CWPPNPlaceModel::CWPPNPlaceModel()
 {
@@ -11,7 +12,7 @@ CWPPNPlaceModel::~CWPPNPlaceModel()
 {
 }
 
-UINT CWPPNPlaceModel::GetMarking()
+UINT CWPPNPlaceModel::GetMarking() const
 {
 	return m_marking;
 }
@@ -53,5 +54,53 @@ CProMoModel* CWPPNPlaceModel::CreateFromString(const CString& str)
 	}
 
 	return obj;
+
+}
+
+CString CWPPNPlaceModel::GetDefaultGetString() const
+{
+	CString result = CProMoBlockModel::GetDefaultGetString();
+
+	CString str;
+
+	str.Format(_T(",%u"), GetMarking());
+
+	return result + str;
+
+}
+
+BOOL CWPPNPlaceModel::GetDefaultFromString(CString& str)
+{
+	BOOL result = CProMoBlockModel::GetDefaultFromString(str);
+	if (result) {
+		result = FALSE;
+		CString data(str);
+		CTokenizer tok(data);
+		int size = tok.GetSize();
+		if (size >= 2)
+		{
+			CString name;
+			int marking;
+			int count = 1;
+
+			tok.GetAt(count++, marking);
+
+			SetMarking(marking);
+
+			// Rebuild rest of string
+			str = _T("");
+			for (int t = count; t < size; t++)
+			{
+				tok.GetAt(t, data);
+
+				str += data;
+				if (t < size - 1)
+					str += _T(",");
+			}
+
+			result = TRUE;
+		}
+	}
+	return result;
 
 }

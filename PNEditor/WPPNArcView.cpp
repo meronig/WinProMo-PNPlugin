@@ -63,6 +63,37 @@ void CWPPNArcView::Draw(CDC* dc, CRect rect)
 		dc->SetBkMode(mode);
 
 	}
+
+	UINT weight = GetWeight();
+	if (weight > 1 && IsFirstSegment()) {
+		CFont font;
+		str.Format(_T("%u"), weight);
+		font.CreateFont(-round(12.0 * GetZoom()), 0, 0, 0, FW_NORMAL, 0, 0, 0, 0, 0, 0, 0, 0, _T("Courier New"));
+		dc->SelectObject(&font);
+		int mode = dc->SetBkMode(TRANSPARENT);
+
+		CRect rectTemp(rect);
+		rectTemp.NormalizeRect();
+		int cy = round(14.0 * GetZoom());
+		int cut = round((double)GetMarkerSize().cx * GetZoom() / 2);
+		CRect r(rect.right - cut, rect.top, rect.right - (rectTemp.Width() + cut), rect.bottom);
+		if (rect.top == rect.bottom)
+		{
+			CRect r(rect.left, rect.top + (cy + cut), rect.right, rect.bottom);
+			r.NormalizeRect();
+			dc->DrawText(str, r, DT_NOPREFIX | DT_SINGLELINE | DT_VCENTER | DT_CENTER);
+		}
+		else
+		{
+			CRect r(rect.left + cut, rect.top, rect.left + (cy * str.GetLength() + cut), rect.bottom);
+			r.NormalizeRect();
+			dc->DrawText(str, r, DT_NOPREFIX | DT_SINGLELINE | DT_VCENTER | DT_RIGHT);
+		}
+
+		dc->SelectStockObject(DEFAULT_GUI_FONT);
+		dc->SetBkMode(mode);
+	}
+
 }
 
 CDiagramEntity* CWPPNArcView::CreateFromString(const CString& str)
@@ -77,4 +108,21 @@ CDiagramEntity* CWPPNArcView::CreateFromString(const CString& str)
 
 	return obj;
 
+}
+
+UINT CWPPNArcView::GetWeight() const
+{
+	CWPPNArcModel* model = dynamic_cast<CWPPNArcModel*>(GetModel());
+	if (model) {
+		return model->GetWeight();
+	}
+	return 1;
+}
+
+void CWPPNArcView::SetWeight(UINT weight)
+{
+	CWPPNArcModel* model = dynamic_cast<CWPPNArcModel*>(GetModel());
+	if (model) {
+		model->SetWeight(weight);
+	}
 }

@@ -9,6 +9,10 @@ class AFX_EXT_CLASS CWPPNArcView :
 public:
     CWPPNArcView();
     virtual ~CWPPNArcView();
+
+    virtual UINT GetWeight() const;
+    virtual void SetWeight(UINT weight);
+
     
     // Overrides
     virtual CDiagramEntity* Clone();

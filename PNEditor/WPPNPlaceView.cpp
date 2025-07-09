@@ -175,7 +175,12 @@ void CWPPNPlaceView::ComputeMinimumSize()
         str.Format(_T("%u"), GetMarking());
 
         CFont font;
-        font.CreateFont(-round(12.0 * GetZoom()), 0, 0, 0, FW_NORMAL, 0, 0, 0, 0, 0, 0, 0, 0, _T("Courier New"));
+        double zoom = GetZoom();
+        if (zoom == 0) {
+            zoom = 1.0;
+        }
+
+        font.CreateFont(-round(12.0 * zoom), 0, 0, 0, FW_NORMAL, 0, 0, 0, 0, 0, 0, 0, 0, _T("Courier New"));
         CRect textBounds = ComputeTextRect(str, font);
 
         CSize minSize = GetMinimumSize();

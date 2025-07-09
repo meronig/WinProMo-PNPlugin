@@ -8,7 +8,7 @@ class AFX_EXT_CLASS CWPPNPlaceModel :
 public:
     CWPPNPlaceModel();
     virtual ~CWPPNPlaceModel();
-    virtual UINT GetMarking();
+    virtual UINT GetMarking() const;
     virtual void SetMarking(UINT marking);
 
     //Overrides
@@ -17,6 +17,11 @@ public:
 
     virtual BOOL CanBeNested(CProMoBlockModel* block);
     static	CProMoModel* CreateFromString(const CString& str);
+
+protected:
+    virtual CString				GetDefaultGetString() const;
+    virtual BOOL				GetDefaultFromString(CString& str);
+
 
 private:
     UINT m_marking;
