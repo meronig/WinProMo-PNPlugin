@@ -1,3 +1,10 @@
+/* ==========================================================================
+
+	Copyright © 2025 Technical University of Denmark
+
+	Author :		Giovanni Meroni
+
+   ========================================================================*/
 #ifndef _WPPNCONTROLFACTORY_H_
 #define _WPPNCONTROLFACTORY_H_
 

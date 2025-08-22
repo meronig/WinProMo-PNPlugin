@@ -1,3 +1,10 @@
+/* ==========================================================================
+
+    Copyright © 2025 Technical University of Denmark
+
+    Author :		Giovanni Meroni
+
+   ========================================================================*/
 #ifndef _WPPNARCMODEL_H_
 #define _WPPNARCMODEL_H_
 

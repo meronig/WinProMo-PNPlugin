@@ -1,3 +1,10 @@
+/* ==========================================================================
+
+	Copyright © 2025 Technical University of Denmark
+
+	Author :		Giovanni Meroni
+
+   ========================================================================*/
 #include "StdAfx.h"
 #include "WPPNDoc.h"
 #include "PNEditor/WPPNControlFactory.h"

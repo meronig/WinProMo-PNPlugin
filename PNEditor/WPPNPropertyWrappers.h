@@ -1,3 +1,10 @@
+/* ==========================================================================
+
+	Copyright © 2025 Technical University of Denmark
+
+	Author :		Giovanni Meroni
+
+   ========================================================================*/
 #ifndef _WPPNPROPERTYWRAPPERS_H_
 #define _WPPNPROPERTYWRAPPERS_H_
 
