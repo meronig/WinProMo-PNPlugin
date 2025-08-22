@@ -30,7 +30,7 @@ void CWPPNArcView::Draw(CDC* dc, CRect rect)
 
 	//draw the tip only if it is the last segment
 	if (m_dest == NULL) {
-		DrawHead(dc, rect, 10);
+		DrawHead(dc, rect, 10 * GetZoom());
 	}
 
 	CString str = GetTitle();
