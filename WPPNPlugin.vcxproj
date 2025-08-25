@@ -157,7 +157,7 @@
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
       <AdditionalDependencies>WinProMo.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)$(Platform)\$(Configuration)\</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)\$(Configuration)\</AdditionalLibraryDirectories>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>

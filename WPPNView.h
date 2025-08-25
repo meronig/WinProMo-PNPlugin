@@ -39,11 +39,4 @@ protected:
 
 };
 
-#ifndef _DEBUG  // debug version in WinProMoView.cpp
-inline CWinProMoDoc* CPNView::GetDocument()
-{
-	return (CWinProMoDoc*)m_pDocument;
-}
-#endif
-
 #endif //_PNVIEW_H_
