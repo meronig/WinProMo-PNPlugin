@@ -7,7 +7,7 @@
    ========================================================================*/
 #include "StdAfx.h"
 #include "WPPNTransModel.h"
-#include "../../WinProMo/DiagramEditor/Tokenizer.h"
+#include "../../../WinProMo/src/DiagramEditor/Tokenizer.h"
 
 CWPPNTransModel::CWPPNTransModel()
 {
@@ -24,7 +24,7 @@ CProMoModel* CWPPNTransModel::Clone()
 	return obj;
 }
 
-BOOL CWPPNTransModel::CanBeNested(CProMoBlockModel* block)
+BOOL CWPPNTransModel::CanBeNestedBy(CProMoBlockModel* block)
 {
 	return FALSE;
 }

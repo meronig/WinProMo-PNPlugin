@@ -5,24 +5,26 @@
     Author :		Giovanni Meroni
 
    ========================================================================*/
-#ifndef _WPPNPLACEMODEL_H_
-#define _WPPNPLACEMODEL_H_
+#ifndef _WPPNARCMODEL_H_
+#define _WPPNARCMODEL_H_
 
-#include "..\..\WinProMo\ProMoEditor\ProMoBlockModel.h"
-class AFX_EXT_CLASS CWPPNPlaceModel :
-    public CProMoBlockModel
+#include "../../../WinProMo/src/ProMoEditor/ProMoEdgeModel.h"
+
+class AFX_EXT_CLASS CWPPNArcModel :
+    public CProMoEdgeModel
 {
-public:
-    CWPPNPlaceModel();
-    virtual ~CWPPNPlaceModel();
-    virtual UINT GetMarking() const;
-    virtual void SetMarking(UINT marking);
+public: 
+    CWPPNArcModel();
+    virtual ~CWPPNArcModel();
+    virtual UINT GetWeight() const;
+    virtual void SetWeight(UINT weight);
 
     //Overrides
     virtual CProMoModel* Clone();
     virtual void	Copy(CProMoModel* obj);
 
-    virtual BOOL CanBeNested(CProMoBlockModel* block);
+    virtual BOOL CanConnectSource(CProMoModel* source);
+    virtual BOOL CanConnectDestination(CProMoModel* destination);
     static	CProMoModel* CreateFromString(const CString& str);
 
 protected:
@@ -31,8 +33,8 @@ protected:
 
 
 private:
-    UINT m_marking;
+    UINT m_weight;
 };
 
-#endif //_WPPNPLACEMODEL_H_
+#endif //_WPPNARCMODEL_H_
 

@@ -7,7 +7,7 @@
    ========================================================================*/
 #include "StdAfx.h"
 #include "WPPNArcModel.h"
-#include "../../WinProMo/DiagramEditor/Tokenizer.h"
+#include "../../../WinProMo/src/DiagramEditor/Tokenizer.h"
 
 CWPPNArcModel::CWPPNArcModel()
 {

@@ -8,8 +8,8 @@
 #ifndef _PNVIEW_H_
 #define _PNVIEW_H_
 
-#include "..\WinProMo\WinProMoView.h"
-#include ".\PNEditor\WPPNEditor.h"
+#include "../../WinProMo/src/WinProMoView.h"
+#include "PNEditor/WPPNEditor.h"
 class WPPNPLUGIN_API CWPPNView :
     public CWinProMoView
 	

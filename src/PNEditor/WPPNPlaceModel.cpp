@@ -7,7 +7,7 @@
    ========================================================================*/
 #include "StdAfx.h"
 #include "WPPNPlaceModel.h"
-#include "../../WinProMo/DiagramEditor/Tokenizer.h"
+#include "../../../WinProMo/src/DiagramEditor/Tokenizer.h"
 
 CWPPNPlaceModel::CWPPNPlaceModel()
 {
@@ -45,7 +45,7 @@ void CWPPNPlaceModel::Copy(CProMoModel* obj)
 	
 }
 
-BOOL CWPPNPlaceModel::CanBeNested(CProMoBlockModel* block)
+BOOL CWPPNPlaceModel::CanBeNestedBy(CProMoBlockModel* block)
 {
 	return FALSE;
 }

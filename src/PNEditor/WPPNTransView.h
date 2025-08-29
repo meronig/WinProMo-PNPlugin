@@ -8,7 +8,7 @@
 #ifndef _WPPNTRANSVIEW_H_
 #define _WPPNTRANSVIEW_H_
 
-#include "..\..\WinProMo\ProMoEditor\ProMoBlockView.h"
+#include "../../../WinProMo/src/ProMoEditor/ProMoBlockView.h"
 
 class AFX_EXT_CLASS CWPPNTransView :
     public CProMoBlockView

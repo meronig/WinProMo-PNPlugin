@@ -10,7 +10,7 @@
 #include "resource.h"
 #include "WPPNDoc.h"
 #include "WPPNView.h"
-#include "../WinProMo/WinProMoDocTemplate.h"
+#include "../../WinProMo/src/WinProMoDocTemplate.h"
 
 CMultiDocTemplate* CWPPNPluginInterface::RegisterPlugin(CRuntimeClass* pFrameClass, CProMoClipboardHandler* pClip)
 {

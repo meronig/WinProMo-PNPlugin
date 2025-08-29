@@ -8,7 +8,7 @@
 #ifndef _WPPNARCVIEW_H_
 #define _WPPNARCVIEW_H_
 
-#include "..\..\WinProMo\ProMoEditor\ProMoEdgeView.h"
+#include "../../../WinProMo/src/ProMoEditor/ProMoEdgeView.h"
 
 class AFX_EXT_CLASS CWPPNArcView :
     public CProMoEdgeView

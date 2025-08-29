@@ -8,7 +8,7 @@
 #include "StdAfx.h"
 #include "WPPNTransView.h"
 #include "WPPNTransModel.h"
-#include "../../WinProMo/ProMoEditor/ProMoNameFactory.h"
+#include "../../../WinProMo/src/ProMoEditor/ProMoNameFactory.h"
 
 CWPPNTransView::CWPPNTransView()
 {

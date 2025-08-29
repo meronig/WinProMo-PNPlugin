@@ -8,7 +8,7 @@
 #ifndef _WPPNPLUGININTERFACE_H_
 #define _WPPNPLUGININTERFACE_H_
 
-#include "../WinProMo/WinProMoPluginInterface.h"
+#include "../../WinProMo/src/WinProMoPluginInterface.h"
 class CWPPNPluginInterface :
     public CWinProMoPluginInterface
 {

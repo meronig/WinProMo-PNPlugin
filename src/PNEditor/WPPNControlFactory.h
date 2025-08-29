@@ -8,9 +8,9 @@
 #ifndef _WPPNCONTROLFACTORY_H_
 #define _WPPNCONTROLFACTORY_H_
 
-#include "../../WinProMo/DiagramEditor/DiagramEntity.h"
-#include "../../WinProMo/ProMoEditor/ProMoModel.h"
-#include "../../WinProMo/ProMoEditor/ProMoControlFactory.h"
+#include "../../../WinProMo/src/DiagramEditor/DiagramEntity.h"
+#include "../../../WinProMo/src/ProMoEditor/ProMoModel.h"
+#include "../../../WinProMo/src/ProMoEditor/ProMoControlFactory.h"
 
 class AFX_EXT_CLASS CWPPNControlFactory :
 public CProMoControlFactory {

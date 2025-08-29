@@ -8,7 +8,7 @@
 #include "StdAfx.h"
 #include "WPPNPlaceView.h"
 #include "WPPNPlaceModel.h"
-#include "../../WinProMo/ProMoEditor/ProMoNameFactory.h"
+#include "../../../WinProMo/src/ProMoEditor/ProMoNameFactory.h"
 #include <math.h>
 
 CWPPNPlaceView::CWPPNPlaceView()

@@ -8,7 +8,7 @@
 #include "StdAfx.h"
 #include "WPPNArcView.h"
 #include "WPPNArcModel.h"
-#include "../../WinProMo/ProMoEditor/ProMoNameFactory.h"
+#include "../../../WinProMo/src/ProMoEditor/ProMoNameFactory.h"
 
 CWPPNArcView::CWPPNArcView()
 {

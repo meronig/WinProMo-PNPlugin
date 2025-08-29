@@ -7,7 +7,7 @@
    ========================================================================*/
 #include "StdAfx.h"
 #include "WPPNEditor.h"
-#include "../../WinProMo/PropertyItem/TypedPropertyItem.h"
+#include "../../../WinProMo/src/PropertyItem/TypedPropertyItem.h"
 #include "WPPNPropertyWrappers.h"
 #include "WPPNPlaceView.h"
 #include "WPPNPlaceModel.h"

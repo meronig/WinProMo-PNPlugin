@@ -8,7 +8,7 @@
 #ifndef _WPPNPLACEVIEW_H_
 #define _WPPNPLACEVIEW_H_
 
-#include "..\..\WinProMo\ProMoEditor\ProMoBlockView.h"
+#include "../../../WinProMo/src/ProMoEditor\ProMoBlockView.h"
 class AFX_EXT_CLASS CWPPNPlaceView :
     public CProMoBlockView
 {
