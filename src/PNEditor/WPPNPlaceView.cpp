@@ -14,6 +14,7 @@
 CWPPNPlaceView::CWPPNPlaceView()
 {
 	SetConstraints(CSize(32, 32), CSize(-1, -1));
+    m_markingRect = CRect(CPoint(0, 0), GetMinimumSize());
 	SetType(_T("pn_place_view"));
 	SetModel(new CWPPNPlaceModel());
     SetLockedProportions(TRUE);
@@ -69,7 +70,7 @@ void CWPPNPlaceView::Draw(CDC* dc, CRect rect)
     titleRect.top = rect.bottom + 2;  // Add vertical spacing
     titleRect.bottom = titleRect.top + textHeight;
 
-    dc->DrawText(str, &titleRect, DT_NOPREFIX | DT_SINGLELINE | DT_TOP);
+    dc->DrawText(str, &titleRect, DT_NOPREFIX | DT_SINGLELINE | DT_TOP | DT_CENTER);
 
     UINT marking = GetMarking();
     
@@ -172,67 +173,6 @@ CPoint CWPPNPlaceView::GetIntersection(CPoint innerPoint, CPoint outerPoint)
     return CPoint(static_cast<int>(xi + 0.5), static_cast<int>(yi + 0.5));
 }
 
-void CWPPNPlaceView::ComputeMinimumSize()
-{
-    UINT marking = GetMarking();
-
-    if (marking > 0) {
-
-        CString str;
-        str.Format(_T("%u"), GetMarking());
-
-        CFont font;
-        double zoom = GetZoom();
-        if (zoom == 0) {
-            zoom = 1.0;
-        }
-
-        font.CreateFont(-round(12.0 * zoom), 0, 0, 0, FW_NORMAL, 0, 0, 0, 0, 0, 0, 0, 0, _T("Courier New"));
-        CRect textBounds = ComputeTextRect(str, font);
-
-        CSize minSize = GetMinimumSize();
-
-        double oldWidth = GetRect().Width();
-        double oldHeight = GetRect().Height();
-        double textWidth = textBounds.Width();
-        double textHeight = textBounds.Height();
-
-        double deltaX;
-        double deltaY;
-
-        if (HasLockedProportions()) {
-            double oldRatio = oldHeight / oldWidth;
-            deltaX = (textWidth + 4 - oldWidth) * oldRatio;
-            deltaY = (textHeight + 4 - oldHeight) / oldRatio;
-
-            if (deltaX > deltaY) {
-                deltaY = deltaX / oldRatio;
-            }
-            else {
-                deltaX = deltaY * oldRatio;
-            }
-        }
-        else {
-            deltaX = textWidth + 4 - oldWidth;
-            deltaY = textHeight + 4 - oldHeight;
-        }
-
-        if (deltaX > 0) {
-            SetRight(GetLeft() + oldWidth + deltaX);
-        }
-
-        if (deltaY > 0) {
-            SetBottom(GetTop() + oldHeight + deltaY);
-        }
-
-        minSize.cx = max(32, oldWidth + deltaX);
-        minSize.cy = max(32, oldHeight + deltaX);
-
-        SetMinimumSize(minSize);
-
-    }
-}
-
 UINT CWPPNPlaceView::GetMarking() 
 {
     CWPPNPlaceModel* model = dynamic_cast<CWPPNPlaceModel*>(GetModel());
@@ -247,13 +187,30 @@ void CWPPNPlaceView::SetMarking(UINT marking)
     CWPPNPlaceModel* model = dynamic_cast<CWPPNPlaceModel*>(GetModel());
     if (model) {
         model->SetMarking(marking);
-        ComputeMinimumSize();
+        ComputeMarkingRect(marking);
+        CDiagramEntity::SetRect(GetRect());
     }
 }
 
 void CWPPNPlaceView::SetModel(CProMoBlockModel* model) {
-    CProMoBlockView::SetModel(model);
-    ComputeMinimumSize();
+    CWPPNPlaceModel* placeModel = dynamic_cast<CWPPNPlaceModel*>(model);
+    if (placeModel) {
+        CProMoBlockView::SetModel(model);
+        ComputeMarkingRect(placeModel->GetMarking());
+        CDiagramEntity::SetRect(GetRect());
+    }
+}
+
+void CWPPNPlaceView::ComputeMarkingRect(const UINT& marking) {
+    CFont font;
+    CString str;
+    double zoom = GetZoom();
+    if (zoom == 0) {
+        zoom = 1.0;
+    }
+    font.CreateFont(-round(12.0 * zoom), 0, 0, 0, FW_NORMAL, 0, 0, 0, 0, 0, 0, 0, 0, _T("Courier New"));
+    str.Format(_T("%i"), marking);
+    m_markingRect = ComputeTextRect(str, font);
 }
 
 CDiagramEntity* CWPPNPlaceView::CreateFromString(const CString& str)
@@ -268,4 +225,33 @@ CDiagramEntity* CWPPNPlaceView::CreateFromString(const CString& str)
 
     return obj;
 
+}
+
+void CWPPNPlaceView::SetRect(CRect rect)
+{
+    // DO NOT DELETE, it is needed for derived classes
+    CProMoBlockView::SetRect(rect);
+}
+
+
+void CWPPNPlaceView::SetRect(double left, double top, double right, double bottom) {
+    if (m_markingRect.Width() > right - left) {
+        if (GetLeft() - left != 0) {
+            left = (right - m_markingRect.Width());
+        }
+        else {
+            right = (left + m_markingRect.Width());
+        }
+    }
+
+    if (m_markingRect.Height() > bottom - top) {
+        if (GetTop() - top != 0) {
+            top = (bottom - m_markingRect.Height());
+        }
+        else {
+            bottom = (top + m_markingRect.Height());
+        }
+    }
+
+    CProMoBlockView::SetRect(left, top, right, bottom);
 }

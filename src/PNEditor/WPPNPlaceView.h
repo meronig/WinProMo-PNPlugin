@@ -23,12 +23,20 @@ public:
     virtual CDiagramEntity* Clone();
     virtual void Draw(CDC* dc, CRect rect);
     virtual void SetModel(CProMoBlockModel* model);
+
     
+    virtual void	SetRect(CRect rect);
+    virtual void	SetRect(double left, double top, double right, double bottom);
     static CDiagramEntity* CreateFromString(const CString& str);
+
 
 protected:    
     virtual CPoint GetIntersection(CPoint innerPoint, CPoint outerPoint);
-    virtual void ComputeMinimumSize();
+
+private:
+    virtual void ComputeMarkingRect(const UINT& text);
+
+    CRect m_markingRect;
 };
 
 #endif //_WPPNPLACEVIEW_H_
