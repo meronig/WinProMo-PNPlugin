@@ -16,6 +16,7 @@ CWPPNTransView::CWPPNTransView()
 	SetType(_T("pn_trans_view"));
 	SetModel(new CWPPNTransModel());
 	SetLockedProportions(FALSE);
+	SetFitTitle(TRUE);
 }
 
 CWPPNTransView::~CWPPNTransView()
@@ -76,33 +77,5 @@ CDiagramEntity* CWPPNTransView::CreateFromString(const CString& str)
 	}
 
 	return obj;
-
-}
-
-void CWPPNTransView::SetTitle(CString title) 
-{
-	CFont font;
-	double zoom = GetZoom();
-	if (zoom == 0) {
-		zoom = 1.0;
-	}
-	font.CreateFont(-round(12.0 * zoom), 0, 0, 0, FW_NORMAL, 0, 0, 0, 0, 0, 0, 0, 0, _T("Courier New"));
-	CRect textBounds = ComputeTextRect(title, font);
-
-	CSize minSize = GetMinimumSize();
-	minSize.cx = max(32, textBounds.Width() + 4);
-	minSize.cy = max(32, textBounds.Height() + 4);
-
-	if (textBounds.Width() + 4 > GetRect().Width()) {
-		SetRight(GetLeft() + textBounds.Width() + 4);
-	}
-
-	if (textBounds.Height() + 4 > GetRect().Height()) {
-		SetLeft(GetTop() + textBounds.Height() + 4);
-	}
-
-	CDiagramEntity::SetTitle(title);
-
-	SetMinimumSize(minSize);
 
 }

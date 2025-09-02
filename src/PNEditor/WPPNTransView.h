@@ -23,7 +23,6 @@ public:
     virtual void Draw(CDC* dc, CRect rect);
 
     static CDiagramEntity* CreateFromString(const CString& str);
-    virtual void	SetTitle(CString title);
 
 };
 
