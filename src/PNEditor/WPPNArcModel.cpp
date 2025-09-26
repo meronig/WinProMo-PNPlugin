@@ -8,6 +8,7 @@
 #include "StdAfx.h"
 #include "WPPNArcModel.h"
 #include "../../../WinProMo/src/DiagramEditor/Tokenizer.h"
+#include "../../../WinProMo/src/FileUtils/FileParser.h"
 
 CWPPNArcModel::CWPPNArcModel()
 {
@@ -99,32 +100,21 @@ BOOL CWPPNArcModel::GetDefaultFromString(CString& str)
 	BOOL result = CProMoEdgeModel::GetDefaultFromString(str);
 	if (result) {
 		result = FALSE;
-		CString data(str);
-		CTokenizer tok(data);
-		int size = tok.GetSize();
-		if (size >= 3)
+		
+		CTokenizer* tok = CFileParser::Tokenize(str);
+		int size = tok->GetSize();
+		if (size >= 4)
 		{
-			CString name;
 			int weight;
-			int count = 2;
+			int count = 3;
 
-			tok.GetAt(count++, weight);
+			tok->GetAt(count++, weight);
 
 			SetWeight(weight);
 
-			// Rebuild rest of string
-			str = _T("");
-			for (int t = count; t < size; t++)
-			{
-				tok.GetAt(t, data);
-
-				str += data;
-				if (t < size - 1)
-					str += _T(",");
-			}
-
 			result = TRUE;
 		}
+		delete tok;
 	}
 	return result;
 

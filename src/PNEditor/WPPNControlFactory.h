@@ -18,6 +18,7 @@ public CProMoControlFactory {
 public:
 	// Implementation
 	virtual CDiagramEntity* CreateViewFromString(const CString& str);
+	virtual CDiagramEntity* CreateViewFromString(const CString& str, CProMoModel* model);
 	virtual CProMoModel* CreateModelFromString(const CString& str);
 
 };

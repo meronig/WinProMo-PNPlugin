@@ -39,6 +39,22 @@ CDiagramEntity* CWPPNControlFactory::CreateViewFromString(const CString& str)
 	return obj;
 }
 
+CDiagramEntity* CWPPNControlFactory::CreateViewFromString(const CString& str, CProMoModel* model)
+{
+	CDiagramEntity* obj;
+
+	obj = CWPPNPlaceView::CreateFromString(str, model);
+
+	if (!obj)
+		obj = CWPPNTransView::CreateFromString(str, model);
+
+	if (!obj)
+		obj = CWPPNArcView::CreateFromString(str, model);
+
+
+	return obj;
+}
+
 CProMoModel* CWPPNControlFactory::CreateModelFromString(const CString& str)
 {
 	CProMoModel* obj;

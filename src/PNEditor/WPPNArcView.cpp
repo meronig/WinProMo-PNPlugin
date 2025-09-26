@@ -117,6 +117,27 @@ CDiagramEntity* CWPPNArcView::CreateFromString(const CString& str)
 
 }
 
+CDiagramEntity* CWPPNArcView::CreateFromString(const CString& str, CProMoModel* model)
+{
+
+	CWPPNArcView* obj = new CWPPNArcView;
+	if (!obj->FromString(str))
+	{
+		delete obj;
+		obj = NULL;
+	}
+	else {
+		CWPPNArcModel* blockModel = dynamic_cast<CWPPNArcModel*>(model);
+
+		if (blockModel) {
+			obj->SetModel(blockModel);
+		}
+	}
+
+	return obj;
+
+}
+
 UINT CWPPNArcView::GetWeight() const
 {
 	CWPPNArcModel* model = dynamic_cast<CWPPNArcModel*>(GetModel());

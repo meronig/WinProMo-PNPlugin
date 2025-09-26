@@ -79,3 +79,24 @@ CDiagramEntity* CWPPNTransView::CreateFromString(const CString& str)
 	return obj;
 
 }
+
+CDiagramEntity* CWPPNTransView::CreateFromString(const CString& str, CProMoModel* model)
+{
+
+	CWPPNTransView* obj = new CWPPNTransView;
+	if (!obj->FromString(str))
+	{
+		delete obj;
+		obj = NULL;
+	}
+	else {
+		CWPPNTransModel* blockModel = dynamic_cast<CWPPNTransModel*>(model);
+
+		if (blockModel) {
+			obj->SetModel(blockModel);
+		}
+	}
+
+	return obj;
+
+}

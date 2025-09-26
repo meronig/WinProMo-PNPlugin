@@ -28,6 +28,7 @@ public:
     virtual void	SetRect(CRect rect);
     virtual void	SetRect(double left, double top, double right, double bottom);
     static CDiagramEntity* CreateFromString(const CString& str);
+    static CDiagramEntity* CreateFromString(const CString& str, CProMoModel* model);
 
 
 protected:    

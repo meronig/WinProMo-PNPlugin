@@ -25,7 +25,7 @@ public:
     virtual CDiagramEntity* Clone();
     virtual void	Draw(CDC* dc, CRect rect);
     static CDiagramEntity* CreateFromString(const CString& str);
-
+    static	CDiagramEntity* CreateFromString(const CString& str, CProMoModel* model);
 };
 
 #endif //_WPPNARCVIEW_H_

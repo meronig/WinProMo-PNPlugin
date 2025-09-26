@@ -8,6 +8,7 @@
 #include "StdAfx.h"
 #include "WPPNPlaceModel.h"
 #include "../../../WinProMo/src/DiagramEditor/Tokenizer.h"
+#include "../../../WinProMo/src/FileUtils/FileParser.h"
 
 CWPPNPlaceModel::CWPPNPlaceModel()
 {
@@ -81,32 +82,22 @@ BOOL CWPPNPlaceModel::GetDefaultFromString(CString& str)
 	BOOL result = CProMoBlockModel::GetDefaultFromString(str);
 	if (result) {
 		result = FALSE;
-		CString data(str);
-		CTokenizer tok(data);
-		int size = tok.GetSize();
-		if (size >= 2)
+		
+		CTokenizer* tok = CFileParser::Tokenize(str);
+		int size = tok->GetSize();
+		if (size >= 3)
 		{
 			CString name;
 			int marking;
-			int count = 1;
+			int count = 2;
 
-			tok.GetAt(count++, marking);
+			tok->GetAt(count++, marking);
 
 			SetMarking(marking);
 
-			// Rebuild rest of string
-			str = _T("");
-			for (int t = count; t < size; t++)
-			{
-				tok.GetAt(t, data);
-
-				str += data;
-				if (t < size - 1)
-					str += _T(",");
-			}
-
 			result = TRUE;
 		}
+		delete tok;
 	}
 	return result;
 

@@ -227,6 +227,27 @@ CDiagramEntity* CWPPNPlaceView::CreateFromString(const CString& str)
 
 }
 
+CDiagramEntity* CWPPNPlaceView::CreateFromString(const CString& str, CProMoModel* model)
+{
+
+    CWPPNPlaceView* obj = new CWPPNPlaceView;
+    if (!obj->FromString(str))
+    {
+        delete obj;
+        obj = NULL;
+    }
+    else {
+        CWPPNPlaceModel* blockModel = dynamic_cast<CWPPNPlaceModel* > (model);
+
+        if (blockModel) {
+            obj->SetModel(blockModel);
+        }
+    }
+
+    return obj;
+
+}
+
 void CWPPNPlaceView::SetRect(CRect rect)
 {
     // DO NOT DELETE, it is needed for derived classes
