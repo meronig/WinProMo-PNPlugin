@@ -20,6 +20,7 @@ CWPPNPlaceView::CWPPNPlaceView()
 	SetType(_T("pn_place_view"));
 	SetModel(new CWPPNPlaceModel());
     SetLockedProportions(TRUE);
+    SetShape(SHAPE_ELLIPSE);
 }
 
 CWPPNPlaceView::~CWPPNPlaceView()
@@ -85,12 +86,6 @@ void CWPPNPlaceView::Draw(CDC* dc, CRect rect)
 
 	dc->SelectStockObject(DEFAULT_GUI_FONT);
 	dc->SetBkMode(mode);
-}
-
-CPoint CWPPNPlaceView::GetIntersection(CPoint innerPoint, CPoint outerPoint)
-{
-    CDoublePoint result = CIntersectionHelper::SegmentIntersectsEllipse(innerPoint, outerPoint, GetRect());
-    return result.ToCPoint();
 }
 
 UINT CWPPNPlaceView::GetMarking() 

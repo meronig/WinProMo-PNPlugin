@@ -30,10 +30,6 @@ public:
     static CDiagramEntity* CreateFromString(const CString& str);
     static CDiagramEntity* CreateFromString(const CString& str, CProMoModel* model);
 
-
-protected:    
-    virtual CPoint GetIntersection(CPoint innerPoint, CPoint outerPoint);
-
 private:
     virtual void ComputeMarkingRect(const UINT& text);
 
