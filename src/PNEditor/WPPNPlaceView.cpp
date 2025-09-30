@@ -10,6 +10,8 @@
 #include "WPPNPlaceModel.h"
 #include "../../../WinProMo/src/ProMoEditor/ProMoNameFactory.h"
 #include <math.h>
+#include "../../../WinProMo/src/GeometryUtils/DoublePoint.h"
+#include "../../../WinProMo/src/GeometryUtils/IntersectionHelper.h"
 
 CWPPNPlaceView::CWPPNPlaceView()
 {
@@ -87,90 +89,8 @@ void CWPPNPlaceView::Draw(CDC* dc, CRect rect)
 
 CPoint CWPPNPlaceView::GetIntersection(CPoint innerPoint, CPoint outerPoint)
 {
-	double ipx = innerPoint.x;
-	double ipy = innerPoint.y;
-    double opx = outerPoint.x;
-    double opy = outerPoint.y;
-
-    // 1. Normalize ellipse bounds
-    double left = min(GetLeft(), GetRight());
-    double right = max(GetLeft(), GetRight());
-    double top = min(GetTop(), GetBottom());
-    double bottom = max(GetTop(), GetBottom());
-
-    // 2. Center and radii
-    double cx = (left + right) / 2.0;
-    double cy = (top + bottom) / 2.0;
-    double a = (right - left) / 2.0;
-    double b = (bottom - top) / 2.0;
-
-    if (a < 1e-6 || b < 1e-6)
-        return CPoint(-1, -1); // Avoid divide-by-zero
-
-    
-    // 3. Translate points to ellipse-centered coordinate system
-    double x1 = (opx - cx) / a;
-    double y1 = (opy - cy) / b;
-    double x2 = (ipx - cx) / a;
-    double y2 = (ipy - cy) / b;
-
-    // Parametrize the segment: P(t) = (x1, y1) + t * (dx, dy)
-    double dx = x2 - x1;
-    double dy = y2 - y1;
-
-    const double pushOut = 1.5;
-    double len = sqrt(dx * dx + dy * dy);
-    if (len > 1e-6) {
-        double scale = (len + pushOut / max(a, b)) / len;
-        x2 = x1 + dx * scale;
-        y2 = y1 + dy * scale;
-        dx = x2 - x1;
-        dy = y2 - y1;
-    }
-
-    // 4. Solve for intersection with unit circle (x² + y² = 1)
-    double A = dx * dx + dy * dy;
-    double B = 2.0 * (x1 * dx + y1 * dy);
-    double C = x1 * x1 + y1 * y1 - 1.0;
-
-    const double EPS = 1e-9;
-    double discriminant = B * B - 4.0 * A * C;
-
-    if (discriminant < 0.0) {
-        if (discriminant > -EPS) {
-            // Treat as tangent
-            discriminant = 0.0;
-        }
-        else {
-            // Truly no intersection
-            return CPoint(-1, -1);
-        }
-    }
-    
-    double sqrtD = sqrt(discriminant);
-    double t1 = (-B - sqrtD) / (2.0 * A);
-    double t2 = (-B + sqrtD) / (2.0 * A);
-
-    // 5. Select the valid t  [0, 1] closest to innerPoint
-    double t = (fabs(t1) < fabs(t2)) ? t1 : t2;
-    t = max(0.0, min(1.0, t));  // Clamp to segment range
-
-    // 5. Transform back to original space
-    double xi = (x1 + t * dx) * a + cx;
-    double yi = (y1 + t * dy) * b + cy;
-
-    // Optional: snap exactly on ellipse (helps long-term stability)
-    double ex = (xi - cx) / a;
-    double ey = (yi - cy) / b;
-    double norm = sqrt(ex * ex + ey * ey);
-    if (norm > 1e-6) {
-        ex /= norm;
-        ey /= norm;
-        xi = cx + ex * a;
-        yi = cy + ey * b;
-    }
-
-    return CPoint(static_cast<int>(xi + 0.5), static_cast<int>(yi + 0.5));
+    CDoublePoint result = CIntersectionHelper::SegmentIntersectsEllipse(innerPoint, outerPoint, GetRect());
+    return result.ToCPoint();
 }
 
 UINT CWPPNPlaceView::GetMarking() 
