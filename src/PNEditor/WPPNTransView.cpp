@@ -17,6 +17,7 @@ CWPPNTransView::CWPPNTransView()
 	SetModel(new CWPPNTransModel());
 	SetLockedProportions(FALSE);
 	SetFitTitle(TRUE);
+	SetShape(SHAPE_RECTANGLE);
 }
 
 CWPPNTransView::~CWPPNTransView()
@@ -35,18 +36,8 @@ void CWPPNTransView::Draw(CDC* dc, CRect rect)
 {
 	ASSERT_VALID(this->GetModel());
 
-	dc->SelectStockObject(BLACK_PEN);
-	dc->SelectStockObject(WHITE_BRUSH);
-
-	if (IsTarget()) {
-		CPen p;
-		p.CreatePen(PS_SOLID, 3, RGB(255, 0, 0));
-		CPen* pOldPen = dc->SelectObject(&p);
-		dc->Rectangle(rect);
-	}
-	else {
-		dc->Rectangle(rect);
-	}
+	DrawShape(dc, rect);
+	DrawTargetBox(dc, rect);
 
 	CFont font;
 	CString str;
