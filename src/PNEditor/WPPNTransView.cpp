@@ -37,7 +37,7 @@ void CWPPNTransView::Draw(CDC* dc, CRect rect)
 	ASSERT_VALID(this->GetModel());
 
 	DrawShape(dc, rect);
-	DrawTargetBox(dc, rect);
+	Highlight(dc, rect);
 
 	CFont font;
 	CString str;
