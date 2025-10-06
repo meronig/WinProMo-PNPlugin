@@ -26,6 +26,10 @@ public:
     virtual void	Draw(CDC* dc, CRect rect);
     static CDiagramEntity* CreateFromString(const CString& str);
     static	CDiagramEntity* CreateFromString(const CString& str, CProMoModel* model);
+
+protected:
+    virtual void DrawLine(CDC* dc, CRect rect);
+
 };
 
 #endif //_WPPNARCVIEW_H_

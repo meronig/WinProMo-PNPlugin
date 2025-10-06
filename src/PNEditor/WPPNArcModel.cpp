@@ -45,7 +45,7 @@ void CWPPNArcModel::Copy(CProMoModel* obj)
 	}
 }
 
-BOOL CWPPNArcModel::CanConnectSource(CProMoModel* source)
+BOOL CWPPNArcModel::CanConnectSource(CProMoBlockModel* source)
 {
 	if (m_dest) {
 		int a = 1;
@@ -58,7 +58,7 @@ BOOL CWPPNArcModel::CanConnectSource(CProMoModel* source)
 }
 
 
-BOOL CWPPNArcModel::CanConnectDestination(CProMoModel* destination)
+BOOL CWPPNArcModel::CanConnectDestination(CProMoBlockModel* destination)
 {
 	if (m_source) {
 		int a = 1;

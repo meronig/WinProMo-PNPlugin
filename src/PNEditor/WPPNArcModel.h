@@ -23,8 +23,8 @@ public:
     virtual CProMoModel* Clone();
     virtual void	Copy(CProMoModel* obj);
 
-    virtual BOOL CanConnectSource(CProMoModel* source);
-    virtual BOOL CanConnectDestination(CProMoModel* destination);
+    virtual BOOL CanConnectSource(CProMoBlockModel* source);
+    virtual BOOL CanConnectDestination(CProMoBlockModel* destination);
     static	CProMoModel* CreateFromString(const CString& str);
 
 protected:

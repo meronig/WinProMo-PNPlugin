@@ -37,22 +37,37 @@ CDiagramEntity* CWPPNPlaceView::Clone()
 
 void CWPPNPlaceView::Draw(CDC* dc, CRect rect)
 {
-	ASSERT_VALID(this->GetModel());
+    CProMoBlockView::Draw(dc, rect);
+	
+    ASSERT_VALID(this->GetModel());
+    CString str;
+    
+    UINT marking = GetMarking();
+    int mode = dc->SetBkMode(TRANSPARENT);
 
-    DrawShape(dc, rect);
-    Highlight(dc, rect);
+    if (marking > 0) {
 
-	CFont font;
-	CString str;
-	/* uncomment line below for debug */
-	//str.Format(_T("%d,%d"), getModel()->getIncomingEdges()->GetSize(), getModel()->getOutgoingEdges()->GetSize());
-	str = GetTitle();
-	font.CreateFont(-round(12.0 * GetZoom()), 0, 0, 0, FW_NORMAL, 0, 0, 0, 0, 0, 0, 0, 0, _T("Courier New"));
-	dc->SelectObject(&font);
-	int mode = dc->SetBkMode(TRANSPARENT);
+        str.Format(_T("%u"), marking);
+        dc->DrawText(str, rect, DT_NOPREFIX | DT_SINGLELINE | DT_VCENTER | DT_CENTER);
+
+    }
+
+	dc->SelectStockObject(DEFAULT_GUI_FONT);
+	dc->SetBkMode(mode);
+}
+
+void CWPPNPlaceView::DrawTitle(CDC* dc, CRect& rect) {
+    CFont font;
+    CString str;
+    /* uncomment line below for debug */
+    //str.Format(_T("%d,%d"), getModel()->getIncomingEdges()->GetSize(), getModel()->getOutgoingEdges()->GetSize());
+    str = GetTitle();
+    font.CreateFont(-round(12.0 * GetZoom()), 0, 0, 0, FW_NORMAL, 0, 0, 0, 0, 0, 0, 0, 0, _T("Courier New"));
+    dc->SelectObject(&font);
+    int mode = dc->SetBkMode(TRANSPARENT);
 
     CRect textBounds = ComputeTextRect(str, font);
-    
+
     CRect titleRect;
     double textWidth = textBounds.Width();
     double textHeight = textBounds.Height();
@@ -65,17 +80,6 @@ void CWPPNPlaceView::Draw(CDC* dc, CRect rect)
 
     dc->DrawText(str, &titleRect, DT_NOPREFIX | DT_SINGLELINE | DT_TOP | DT_CENTER);
 
-    UINT marking = GetMarking();
-    
-    if (marking > 0) {
-
-        str.Format(_T("%u"), marking);
-        dc->DrawText(str, rect, DT_NOPREFIX | DT_SINGLELINE | DT_VCENTER | DT_CENTER);
-
-    }
-
-	dc->SelectStockObject(DEFAULT_GUI_FONT);
-	dc->SetBkMode(mode);
 }
 
 UINT CWPPNPlaceView::GetMarking() 
