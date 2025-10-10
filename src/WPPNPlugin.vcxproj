@@ -200,7 +200,6 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="PNEditor\WPPNPropertyWrappers.cpp" />
     <ClCompile Include="PNEditor\WPPNPlaceModel.cpp" />
     <ClCompile Include="PNEditor\WPPNArcModel.cpp" />
     <ClCompile Include="PNEditor\WPPNArcView.cpp" />
@@ -219,7 +218,6 @@
     <None Include="res\PNPlugin.rc2" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PNEditor\WPPNPropertyWrappers.h" />
     <ClInclude Include="PNEditor\WPPNPlaceModel.h" />
     <ClInclude Include="PNEditor\WPPNArcModel.h" />
     <ClInclude Include="PNEditor\WPPNArcView.h" />

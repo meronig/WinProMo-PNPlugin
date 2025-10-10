@@ -54,9 +54,6 @@
     <ClCompile Include="PNEditor\WPPNControlFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PNEditor\WPPNPropertyWrappers.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\PNPlugin.rc2">
@@ -101,9 +98,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PNEditor\WPPNControlFactory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PNEditor\WPPNPropertyWrappers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -9,40 +9,22 @@
 #include "WPPNArcModel.h"
 #include "../../../WinProMo/src/DiagramEditor/Tokenizer.h"
 #include "../../../WinProMo/src/FileUtils/FileParser.h"
+#include "../../../WinProMo/src/ProMoEditor/ProMoProperty.h"
 
 CWPPNArcModel::CWPPNArcModel()
 {
 	SetType(_T("pn_arc_model"));
-	m_weight = 1;
+	CreateProperties();
 }
 
 CWPPNArcModel::~CWPPNArcModel()
 {
 }
 
-UINT CWPPNArcModel::GetWeight() const
-{
-	return m_weight;
-}
-
-void CWPPNArcModel::SetWeight(UINT weight)
-{
-	m_weight = weight;
-}
-
 CProMoModel* CWPPNArcModel::Clone()
 {
 	CWPPNArcModel* obj = new CWPPNArcModel;
 	return obj;
-}
-
-void CWPPNArcModel::Copy(CProMoModel* obj)
-{
-	CProMoEdgeModel::Copy(obj);
-	CWPPNArcModel* objModel = dynamic_cast<CWPPNArcModel*>(obj);
-	if (objModel) {
-		SetWeight(objModel->GetWeight());
-	}
 }
 
 BOOL CWPPNArcModel::CanConnectSource(CProMoBlockModel* source)
@@ -84,38 +66,8 @@ CProMoModel* CWPPNArcModel::CreateFromString(const CString& str)
 
 }
 
-CString CWPPNArcModel::GetDefaultGetString() const
+void CWPPNArcModel::CreateProperties()
 {
-	CString result = CProMoEdgeModel::GetDefaultGetString();
-
-	CString str;
-
-	str.Format(_T(",%u"), GetWeight());
-
-	return result + str;
-}
-
-BOOL CWPPNArcModel::GetDefaultFromString(CString& str)
-{
-	BOOL result = CProMoEdgeModel::GetDefaultFromString(str);
-	if (result) {
-		result = FALSE;
-		
-		CTokenizer* tok = CFileParser::Tokenize(str);
-		int size = tok->GetSize();
-		if (size >= 4)
-		{
-			int weight;
-			int count = 3;
-
-			tok->GetAt(count++, weight);
-
-			SetWeight(weight);
-
-			result = TRUE;
-		}
-		delete tok;
-	}
-	return result;
-
+	CProMoModel::CreateProperties();
+	AddProperty(new CProMoProperty(_T("Weight"), TYPE_INT, COleVariant((long)1), FALSE, TRUE, TRUE, this));
 }

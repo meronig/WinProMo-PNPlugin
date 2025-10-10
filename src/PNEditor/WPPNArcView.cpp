@@ -33,7 +33,7 @@ void CWPPNArcView::Draw(CDC* dc, CRect rect)
 	CProMoEdgeView::Draw(dc, rect);
 
 	CString str;
-	UINT weight = GetWeight();
+	UINT weight = 0;// GetWeight();
 	if (weight > 1 && IsFirstSegment()) {
 		CFont font;
 		str.Format(_T("%u"), weight);
@@ -112,21 +112,4 @@ CDiagramEntity* CWPPNArcView::CreateFromString(const CString& str, CProMoModel* 
 
 	return obj;
 
-}
-
-UINT CWPPNArcView::GetWeight() const
-{
-	CWPPNArcModel* model = dynamic_cast<CWPPNArcModel*>(GetModel());
-	if (model) {
-		return model->GetWeight();
-	}
-	return 1;
-}
-
-void CWPPNArcView::SetWeight(UINT weight)
-{
-	CWPPNArcModel* model = dynamic_cast<CWPPNArcModel*>(GetModel());
-	if (model) {
-		model->SetWeight(weight);
-	}
 }

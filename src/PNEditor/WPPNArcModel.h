@@ -16,24 +16,17 @@ class AFX_EXT_CLASS CWPPNArcModel :
 public: 
     CWPPNArcModel();
     virtual ~CWPPNArcModel();
-    virtual UINT GetWeight() const;
-    virtual void SetWeight(UINT weight);
-
+    
     //Overrides
     virtual CProMoModel* Clone();
-    virtual void	Copy(CProMoModel* obj);
-
+    
     virtual BOOL CanConnectSource(CProMoBlockModel* source);
     virtual BOOL CanConnectDestination(CProMoBlockModel* destination);
     static	CProMoModel* CreateFromString(const CString& str);
 
 protected:
-    virtual CString				GetDefaultGetString() const;
-    virtual BOOL				GetDefaultFromString(CString& str);
+    virtual void CreateProperties();
 
-
-private:
-    UINT m_weight;
 };
 
 #endif //_WPPNARCMODEL_H_

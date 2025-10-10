@@ -18,9 +18,6 @@ public:
 
     virtual CDiagramEntity* Clone();
 
-    virtual UINT GetMarking();
-    virtual void SetMarking(UINT marking);
-
 private:
     virtual void ComputeMarkingRect(const UINT& text);
 

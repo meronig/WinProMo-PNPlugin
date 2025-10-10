@@ -42,7 +42,7 @@ void CWPPNPlaceView::Draw(CDC* dc, CRect rect)
     ASSERT_VALID(this->GetModel());
     CString str;
     
-    UINT marking = GetMarking();
+    UINT marking = 0; //GetMarking();
     int mode = dc->SetBkMode(TRANSPARENT);
 
     if (marking > 0) {
@@ -82,30 +82,11 @@ void CWPPNPlaceView::DrawTitle(CDC* dc, CRect& rect) {
 
 }
 
-UINT CWPPNPlaceView::GetMarking() 
-{
-    CWPPNPlaceModel* model = dynamic_cast<CWPPNPlaceModel*>(GetModel());
-    if (model) {
-        return model->GetMarking();
-    }
-    return 0;
-}
-
-void CWPPNPlaceView::SetMarking(UINT marking) 
-{
-    CWPPNPlaceModel* model = dynamic_cast<CWPPNPlaceModel*>(GetModel());
-    if (model) {
-        model->SetMarking(marking);
-        ComputeMarkingRect(marking);
-        CDiagramEntity::SetRect(GetRect());
-    }
-}
-
 void CWPPNPlaceView::SetModel(CProMoBlockModel* model) {
     CWPPNPlaceModel* placeModel = dynamic_cast<CWPPNPlaceModel*>(model);
     if (placeModel) {
         CProMoBlockView::SetModel(model);
-        ComputeMarkingRect(placeModel->GetMarking());
+        //ComputeMarkingRect(placeModel->GetMarking());
         CDiagramEntity::SetRect(GetRect());
     }
 }

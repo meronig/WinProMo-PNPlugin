@@ -15,23 +15,16 @@ class AFX_EXT_CLASS CWPPNPlaceModel :
 public:
     CWPPNPlaceModel();
     virtual ~CWPPNPlaceModel();
-    virtual UINT GetMarking() const;
-    virtual void SetMarking(UINT marking);
-
+    
     //Overrides
     virtual CProMoModel* Clone();
-    virtual void	Copy(CProMoModel* obj);
-
+    
     virtual BOOL CanBeNestedBy(CProMoBlockModel* block);
     static	CProMoModel* CreateFromString(const CString& str);
 
 protected:
-    virtual CString				GetDefaultGetString() const;
-    virtual BOOL				GetDefaultFromString(CString& str);
+    virtual void CreateProperties();
 
-
-private:
-    UINT m_marking;
 };
 
 #endif //_WPPNPLACEMODEL_H_
