@@ -25,7 +25,7 @@ CWPPNEditor::~CWPPNEditor()
 
 CObArray* CWPPNEditor::GetProperties(CDiagramEntity* element) 
 {
-	CObArray* pProps = CProMoEditor::GetProperties(element);
+	CObArray* pProps = NULL; //CProMoEditor::GetProperties(element);
 	if (pProps) {
 		CWPPNPlaceView* placeView = dynamic_cast<CWPPNPlaceView*>(element);
 		if (placeView) {
