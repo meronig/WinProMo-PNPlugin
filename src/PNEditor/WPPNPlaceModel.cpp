@@ -49,5 +49,7 @@ CProMoModel* CWPPNPlaceModel::CreateFromString(const CString& str)
 void CWPPNPlaceModel::CreateProperties()
 {
 	CProMoModel::CreateProperties();
-	AddProperty(new CProMoProperty(_T("Marking"), TYPE_INT, COleVariant((long)1), FALSE, TRUE, TRUE, this));
+	CVariantWrapper wrapper;
+	wrapper.SetInt(1);
+	AddProperty(new CProMoProperty(_T("Marking"), TYPE_INT, wrapper, FALSE, TRUE, TRUE, this));
 }

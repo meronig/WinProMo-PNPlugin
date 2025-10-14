@@ -69,5 +69,7 @@ CProMoModel* CWPPNArcModel::CreateFromString(const CString& str)
 void CWPPNArcModel::CreateProperties()
 {
 	CProMoModel::CreateProperties();
-	AddProperty(new CProMoProperty(_T("Weight"), TYPE_INT, COleVariant((long)1), FALSE, TRUE, TRUE, this));
+	CVariantWrapper wrapper;
+	wrapper.SetInt(1);
+	AddProperty(new CProMoProperty(_T("Weight"), TYPE_INT, wrapper, FALSE, TRUE, TRUE, this));
 }
