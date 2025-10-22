@@ -9,6 +9,7 @@
 #define _WPPNARCMODEL_H_
 
 #include "../../../WinProMo/src/ProMoEditor/ProMoEdgeModel.h"
+#include "../../../WinProMo/src/ProMoEditor/ProMoLabel.h"
 
 class AFX_EXT_CLASS CWPPNArcModel :
     public CProMoEdgeModel
@@ -26,6 +27,7 @@ public:
 
 protected:
     virtual void CreateProperties();
+    virtual void CustomizeLabel(CProMoLabel* label);
 
 };
 

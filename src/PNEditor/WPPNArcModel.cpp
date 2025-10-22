@@ -73,3 +73,19 @@ void CWPPNArcModel::CreateProperties()
 	wrapper.SetInt(1);
 	AddProperty(new CProMoProperty(_T("Weight"), TYPE_INT, wrapper, FALSE, TRUE, TRUE, this));
 }
+
+void CWPPNArcModel::CustomizeLabel(CProMoLabel* label)
+{
+	if (label) {
+		if (label->GetProperty() == CString("Weight")) {
+			label->SetViewAnchorPoint(DEHT_CENTER);
+			label->SetLabelAnchorPoint(DEHT_TOPMIDDLE);
+		}
+		if (label->GetProperty() == CString("Title")) {
+			label->SetViewAnchorPoint(DEHT_CENTER);
+			label->SetLabelAnchorPoint(DEHT_BOTTOMMIDDLE);
+		}
+	}
+
+	CProMoModel::CustomizeLabel(label);
+}
