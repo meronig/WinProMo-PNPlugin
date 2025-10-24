@@ -58,6 +58,7 @@ void CWPPNPlaceModel::CustomizeLabel(CProMoLabel* label)
 {
 	if (label) {
 		if (label->GetProperty() == CString("Marking")) {
+			label->SetFitView(TRUE);
 			label->SetViewAnchorPoint(DEHT_CENTER);
 			label->SetLabelAnchorPoint(DEHT_CENTER);
 			label->SetLock(PROMO_LOCK_REPOSITIONING);
