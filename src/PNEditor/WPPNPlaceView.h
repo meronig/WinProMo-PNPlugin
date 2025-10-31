@@ -16,27 +16,15 @@ public:
     CWPPNPlaceView();
     virtual ~CWPPNPlaceView();
 
+    // Overrides
     virtual CDiagramEntity* Clone();
 
-private:
-    virtual void ComputeMarkingRect(const UINT& text);
-
-    CRect m_markingRect;
-
 public:
-    // Overrides
-    virtual void Draw(CDC* dc, CRect rect);
-    
-    virtual void	SetRect(CRect rect);
-    virtual void	SetRect(double left, double top, double right, double bottom);
     
     static CDiagramEntity* CreateFromString(const CString& str);
     static CDiagramEntity* CreateFromString(const CString& str, CProMoModel* model);
 
-protected:
-    virtual void SetModel(CProMoBlockModel* model);
-    virtual void DrawTitle(CDC* dc, CRect& rect);
-
+    
 };
 
 #endif //_WPPNPLACEVIEW_H_

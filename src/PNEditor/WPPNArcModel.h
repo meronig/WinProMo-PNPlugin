@@ -25,6 +25,8 @@ public:
     virtual BOOL CanConnectDestination(CProMoBlockModel* destination);
     static	CProMoModel* CreateFromString(const CString& str);
 
+    virtual void OnPropertyChanged(CProMoProperty* prop);
+
 protected:
     virtual void CreateProperties();
     virtual void CustomizeLabel(CProMoLabel* label);

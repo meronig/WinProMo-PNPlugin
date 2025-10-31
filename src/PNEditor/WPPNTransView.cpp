@@ -16,7 +16,6 @@ CWPPNTransView::CWPPNTransView()
 	SetType(_T("pn_trans_view"));
 	SetModel(new CWPPNTransModel());
 	SetLockedProportions(FALSE);
-	SetFitTitle(TRUE);
 	SetShape(SHAPE_RECTANGLE);
 }
 
