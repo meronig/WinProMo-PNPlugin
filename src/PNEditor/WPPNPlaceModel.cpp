@@ -51,7 +51,7 @@ void CWPPNPlaceModel::CreateProperties()
 	CProMoModel::CreateProperties();
 	CVariantWrapper wrapper;
 	wrapper.SetInt(1);
-	AddProperty(new CProMoProperty(_T("Marking"), TYPE_INT, wrapper, FALSE, TRUE, TRUE, this));
+	AddProperty(new CProMoProperty(_T("Marking"), PROPTYPE_INT, wrapper, FALSE, TRUE, TRUE, this));
 }
 
 void CWPPNPlaceModel::CustomizeLabel(CProMoLabel* label)
@@ -61,7 +61,7 @@ void CWPPNPlaceModel::CustomizeLabel(CProMoLabel* label)
 			label->SetFitView(TRUE);
 			label->SetViewAnchorPoint(DEHT_CENTER);
 			label->SetLabelAnchorPoint(DEHT_CENTER);
-			label->SetLock(PROMO_LOCK_REPOSITIONING);
+			label->SetLock(LOCK_REPOSITIONING);
 		}
 		if (label->GetProperty() == CString("Title")) {
 			label->SetViewAnchorPoint(DEHT_BOTTOMMIDDLE);

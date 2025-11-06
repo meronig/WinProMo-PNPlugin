@@ -71,7 +71,7 @@ void CWPPNArcModel::CreateProperties()
 	CProMoModel::CreateProperties();
 	CVariantWrapper wrapper;
 	wrapper.SetInt(1);
-	AddProperty(new CProMoProperty(_T("Weight"), TYPE_INT, wrapper, FALSE, TRUE, TRUE, this));
+	AddProperty(new CProMoProperty(_T("Weight"), PROPTYPE_INT, wrapper, FALSE, TRUE, TRUE, this));
 }
 
 void CWPPNArcModel::CustomizeLabel(CProMoLabel* label)
@@ -82,11 +82,11 @@ void CWPPNArcModel::CustomizeLabel(CProMoLabel* label)
 			label->SetLabelAnchorPoint(DEHT_TOPMIDDLE);
 			if (GetPropertyValue("Weight").GetInt() == 1) {
 				label->SetVisible(FALSE);
-				label->SetLock(label->GetLock() | PROMO_LOCK_SELECTION);
+				label->SetLock(label->GetLock() | LOCK_SELECTION);
 			}
 			else {
 				label->SetVisible(TRUE);
-				label->SetLock(label->GetLock() &~ PROMO_LOCK_SELECTION);
+				label->SetLock(label->GetLock() &~ LOCK_SELECTION);
 			}
 		}
 		if (label->GetProperty() == CString("Title")) {
@@ -108,11 +108,11 @@ void CWPPNArcModel::OnPropertyChanged(CProMoProperty* prop)
 		if (label) {
 			if (prop->GetValue().GetInt() == 1) {
 				label->SetVisible(FALSE);
-				label->SetLock(label->GetLock() | PROMO_LOCK_SELECTION);
+				label->SetLock(label->GetLock() | LOCK_SELECTION);
 			}
 			else {
 				label->SetVisible(TRUE);
-				label->SetLock(label->GetLock() & ~PROMO_LOCK_SELECTION);
+				label->SetLock(label->GetLock() & ~LOCK_SELECTION);
 			}
 		}
 	}
