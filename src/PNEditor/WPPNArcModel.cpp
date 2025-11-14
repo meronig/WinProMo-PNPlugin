@@ -77,7 +77,7 @@ void CWPPNArcModel::CreateProperties()
 void CWPPNArcModel::CustomizeLabel(CProMoLabel* label)
 {
 	if (label) {
-		if (label->GetProperty() == CString("Weight")) {
+		if (label->GetPropertyName() == CString("Weight")) {
 			label->SetViewAnchorPoint(DEHT_CENTER);
 			label->SetLabelAnchorPoint(DEHT_TOPMIDDLE);
 			if (GetPropertyValue("Weight").GetInt() == 1) {
@@ -89,7 +89,7 @@ void CWPPNArcModel::CustomizeLabel(CProMoLabel* label)
 				label->SetLock(label->GetLock() &~ LOCK_SELECTION);
 			}
 		}
-		if (label->GetProperty() == CString("Title")) {
+		if (label->GetPropertyName() == CString("Title")) {
 			label->SetViewAnchorPoint(DEHT_CENTER);
 			label->SetLabelAnchorPoint(DEHT_BOTTOMMIDDLE);
 		}

@@ -57,13 +57,13 @@ void CWPPNPlaceModel::CreateProperties()
 void CWPPNPlaceModel::CustomizeLabel(CProMoLabel* label)
 {
 	if (label) {
-		if (label->GetProperty() == CString("Marking")) {
+		if (label->GetPropertyName() == CString("Marking")) {
 			label->SetFitView(TRUE);
 			label->SetViewAnchorPoint(DEHT_CENTER);
 			label->SetLabelAnchorPoint(DEHT_CENTER);
 			label->SetLock(LOCK_REPOSITIONING);
 		}
-		if (label->GetProperty() == CString("Title")) {
+		if (label->GetPropertyName() == CString("Title")) {
 			label->SetViewAnchorPoint(DEHT_BOTTOMMIDDLE);
 			label->SetLabelAnchorPoint(DEHT_TOPMIDDLE);
 		}
