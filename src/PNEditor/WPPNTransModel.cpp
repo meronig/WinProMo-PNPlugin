@@ -24,7 +24,7 @@ CProMoModel* CWPPNTransModel::Clone()
 	return obj;
 }
 
-BOOL CWPPNTransModel::CanBeNestedBy(CProMoBlockModel* block)
+BOOL CWPPNTransModel::CanBeSubBlockOf(CProMoBlockModel* block) const
 {
 	return FALSE;
 }

@@ -27,7 +27,7 @@ CProMoModel* CWPPNArcModel::Clone()
 	return obj;
 }
 
-BOOL CWPPNArcModel::CanConnectSource(CProMoBlockModel* source)
+BOOL CWPPNArcModel::CanConnectSource(CProMoBlockModel* source) const
 {
 	if (m_dest) {
 		int a = 1;
@@ -40,7 +40,7 @@ BOOL CWPPNArcModel::CanConnectSource(CProMoBlockModel* source)
 }
 
 
-BOOL CWPPNArcModel::CanConnectDestination(CProMoBlockModel* destination)
+BOOL CWPPNArcModel::CanConnectDestination(CProMoBlockModel* destination) const
 {
 	if (m_source) {
 		int a = 1;

@@ -21,8 +21,8 @@ public:
     //Overrides
     virtual CProMoModel* Clone();
     
-    virtual BOOL CanConnectSource(CProMoBlockModel* source);
-    virtual BOOL CanConnectDestination(CProMoBlockModel* destination);
+    virtual BOOL CanConnectSource(CProMoBlockModel* source) const;
+    virtual BOOL CanConnectDestination(CProMoBlockModel* destination) const;
     static	CProMoModel* CreateFromString(const CString& str);
 
     virtual void OnPropertyChanged(CProMoProperty* prop);

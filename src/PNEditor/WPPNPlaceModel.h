@@ -21,7 +21,7 @@ public:
     //Overrides
     virtual CProMoModel* Clone();
     
-    virtual BOOL CanBeNestedBy(CProMoBlockModel* block);
+    virtual BOOL CanBeSubBlockOf(CProMoBlockModel* block) const;
     static	CProMoModel* CreateFromString(const CString& str);
 
 protected:

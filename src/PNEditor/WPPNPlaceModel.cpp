@@ -27,7 +27,7 @@ CProMoModel* CWPPNPlaceModel::Clone()
 	return obj;
 }
 
-BOOL CWPPNPlaceModel::CanBeNestedBy(CProMoBlockModel* block)
+BOOL CWPPNPlaceModel::CanBeSubBlockOf(CProMoBlockModel* block) const
 {
 	return FALSE;
 }
