@@ -32,6 +32,11 @@ BOOL CWPPNPlaceModel::CanBeSubBlockOf(CProMoBlockModel* block) const
 	return FALSE;
 }
 
+BOOL CWPPNPlaceModel::CanBeBoundaryOf(CProMoBlockModel* block, unsigned int alignment) const
+{
+	return FALSE;
+}
+
 CProMoModel* CWPPNPlaceModel::CreateFromString(const CString& str)
 {
 

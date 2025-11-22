@@ -29,6 +29,11 @@ BOOL CWPPNTransModel::CanBeSubBlockOf(CProMoBlockModel* block) const
 	return FALSE;
 }
 
+BOOL CWPPNTransModel::CanBeBoundaryOf(CProMoBlockModel* block, unsigned int alignment) const
+{
+	return FALSE;
+}
+
 CProMoModel* CWPPNTransModel::CreateFromString(const CString& str)
 {
 

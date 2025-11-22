@@ -22,6 +22,7 @@ public:
     virtual CProMoModel* Clone();
     
     virtual BOOL CanBeSubBlockOf(CProMoBlockModel* block) const;
+    virtual BOOL CanBeBoundaryOf(CProMoBlockModel* block, unsigned int alignment) const;
     static	CProMoModel* CreateFromString(const CString& str);
 
 protected:
