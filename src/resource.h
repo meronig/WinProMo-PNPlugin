@@ -3,7 +3,6 @@
 // Used by WPPNPlugin.rc
 //
 #define IDR_MAINFRAME                   128
-#define IDR_WPDPLUGIN                   129
 #define IDR_WPPNPLUGIN                  300
 #define IDI_ICON_TRANS                  301
 #define IDI_ICON_PLACE                  302

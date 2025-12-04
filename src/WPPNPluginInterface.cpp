@@ -10,26 +10,9 @@
 #include "resource.h"
 #include "WPPNDoc.h"
 #include "WPPNView.h"
-#include "../../WinProMo/src/WinProMoDocTemplate.h"
+#include "PNEditor/WPPNControlFactory.h"
+#include "WPPNCmdHandler.h"
 
-CMultiDocTemplate* CWPPNPluginInterface::RegisterPlugin(CRuntimeClass* pFrameClass, CProMoClipboardHandler* pClip)
-{
-    static CMultiDocTemplate* g_pTemplate = NULL;
-
-    if (!g_pTemplate)
-    {
-        //needed for default menu bar
-        g_pTemplate = new CWinProMoDocTemplate(
-            IDR_WPPNPLUGIN,
-            RUNTIME_CLASS(CWPPNDoc),
-            pFrameClass,
-            RUNTIME_CLASS(CWPPNView),
-            pClip
-        );
-    }
-
-    return g_pTemplate;
-}
 
 CObArray* CWPPNPluginInterface::GetElements()
 {
@@ -89,10 +72,25 @@ const CString CWPPNPluginInterface::GetDocumentType()
 const UINT CWPPNPluginInterface::GetDocumentID()
 {
     //needed for custom menus
-    return IDR_WPDPLUGIN;
+    return IDR_WPPNPLUGIN;
 }
 
 void CWPPNPluginInterface::Destroy()
 {
     delete this;
+}
+
+CWinProMoCmdHandler* CWPPNPluginInterface::GetCmdHandler()
+{
+    return new CWPPNCmdHandler;
+}
+
+CProMoEntityContainer* CWPPNPluginInterface::GetContainer()
+{
+    return new CProMoEntityContainer("pnPlugin");
+}
+
+CProMoControlFactory* CWPPNPluginInterface::GetControlFactory()
+{
+    return new CWPPNControlFactory;
 }

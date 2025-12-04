@@ -8,7 +8,7 @@
 #ifndef _PNDOC_H_
 #define _PNDOC_H_
 
-#include "../../WinProMo/src/WinProMoDoc.h"
+#include "../../WinProMo-App/src/WinProMoDoc.h"
 class WPPNPLUGIN_API CWPPNDoc :
     public CWinProMoDoc
 {

@@ -206,13 +206,12 @@
     <ClCompile Include="PNEditor\WPPNArcView.cpp" />
     <ClCompile Include="PNEditor\WPPNPlaceView.cpp" />
     <ClCompile Include="PNEditor\WPPNControlFactory.cpp" />
+    <ClCompile Include="WPPNCmdHandler.cpp" />
     <ClCompile Include="WPPNPluginInterface.cpp" />
-    <ClCompile Include="WPPNDoc.cpp" />
     <ClCompile Include="PNEditor\WPPNEditor.cpp" />
     <ClCompile Include="WPPNPlugin.cpp" />
     <ClCompile Include="PNEditor\WPPNTransModel.cpp" />
     <ClCompile Include="PNEditor\WPPNTransView.cpp" />
-    <ClCompile Include="WPPNView.cpp" />
     <ClCompile Include="StdAfx.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -224,12 +223,11 @@
     <ClInclude Include="PNEditor\WPPNArcView.h" />
     <ClInclude Include="PNEditor\WPPNPlaceView.h" />
     <ClInclude Include="PNEditor\WPPNControlFactory.h" />
+    <ClInclude Include="WPPNCmdHandler.h" />
     <ClInclude Include="WPPNPluginInterface.h" />
-    <ClInclude Include="WPPNDoc.h" />
     <ClInclude Include="PNEditor\WPPNEditor.h" />
     <ClInclude Include="PNEditor\WPPNTransModel.h" />
     <ClInclude Include="PNEditor\WPPNTransView.h" />
-    <ClInclude Include="WPPNView.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="StdAfx.h" />
   </ItemGroup>

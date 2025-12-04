@@ -24,12 +24,6 @@
     <ClCompile Include="PNEditor\WPPNEditor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WPPNView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="WPPNDoc.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="WPPNPluginInterface.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -54,6 +48,9 @@
     <ClCompile Include="PNEditor\WPPNControlFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="WPPNCmdHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\PNPlugin.rc2">
@@ -68,12 +65,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PNEditor\WPPNEditor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WPPNView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WPPNDoc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="WPPNPluginInterface.h">
@@ -98,6 +89,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PNEditor\WPPNControlFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WPPNCmdHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
