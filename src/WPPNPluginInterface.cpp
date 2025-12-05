@@ -8,8 +8,6 @@
 #include "stdafx.h"
 #include "WPPNPluginInterface.h"
 #include "resource.h"
-#include "WPPNDoc.h"
-#include "WPPNView.h"
 #include "PNEditor/WPPNControlFactory.h"
 #include "WPPNCmdHandler.h"
 
