@@ -92,3 +92,8 @@ CProMoControlFactory* CWPPNPluginInterface::GetControlFactory()
 {
     return new CWPPNControlFactory;
 }
+
+CProMoRenderer* CWPPNPluginInterface::GetRenderer()
+{
+    return new CProMoRenderer;
+}
