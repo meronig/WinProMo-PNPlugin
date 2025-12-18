@@ -73,12 +73,17 @@ const UINT CWPPNPluginInterface::GetDocumentID()
     return IDR_WPPNPLUGIN;
 }
 
+const CString CWPPNPluginInterface::GetDocumentDescr()
+{
+    return CString("Petri Net");
+}
+
 void CWPPNPluginInterface::Destroy()
 {
     delete this;
 }
 
-CWinProMoCmdHandler* CWPPNPluginInterface::GetCmdHandler()
+CProMoCmdHandler* CWPPNPluginInterface::GetCmdHandler()
 {
     return new CWPPNCmdHandler;
 }

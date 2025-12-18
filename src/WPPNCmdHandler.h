@@ -1,11 +1,18 @@
+/* ==========================================================================
+
+	Copyright © 2025 Technical University of Denmark
+
+	Author :		Giovanni Meroni
+
+   ========================================================================*/
 #ifndef _WPPNCOMMANDHANDLER_H_
 #define _WPPNCOMMANDHANDLER_H_
 
-#include "../../WinProMo/src/WinProMoCmdHandler.h"
+#include "../../WinProMo/src/ProMoEditor/ProMoCmdHandler.h"
 #include "PNEditor/WPPNEditor.h"
 
 class AFX_EXT_CLASS CWPPNCmdHandler :
-    public CWinProMoCmdHandler
+    public CProMoCmdHandler
 {
 public:
 	CWPPNCmdHandler();
