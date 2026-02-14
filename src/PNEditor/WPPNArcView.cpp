@@ -28,18 +28,9 @@ CDiagramEntity* CWPPNArcView::Clone()
 	return obj;
 }
 
-void CWPPNArcView::DrawLine(CDC* dc, CRect rect)
+void CWPPNArcView::DrawTail(CDC* dc, CRect rect, double size)
 {
-	dc->SelectStockObject(BLACK_PEN);
-
-	dc->MoveTo(rect.TopLeft());
-	dc->LineTo(rect.BottomRight());
-
-	//draw the tip only if it is the last segment
-	if (m_dest == NULL) {
-		DrawHead(dc, rect, 10 * GetZoom());
-	}
-
+	// Do nothing, arcs do not have arrow tail
 }
 
 CDiagramEntity* CWPPNArcView::CreateFromString(const CString& str)
@@ -75,4 +66,15 @@ CDiagramEntity* CWPPNArcView::CreateFromString(const CString& str, CProMoModel* 
 
 	return obj;
 
+}
+
+CDiagramEntity* CWPPNArcView::Create(const CString& str)
+{
+	CWPPNArcView* obj = new CWPPNArcView;
+	if (!obj->HasType(str))
+	{
+		delete obj;
+		obj = NULL;
+	}
+	return obj;
 }

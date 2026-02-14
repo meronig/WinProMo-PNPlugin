@@ -69,3 +69,36 @@ CProMoModel* CWPPNControlFactory::CreateModelFromString(const CString& str)
 
 	return obj;
 }
+
+CDiagramEntity* CWPPNControlFactory::CreateNewEntity(const CString& str)
+{
+	CDiagramEntity* obj;
+
+	obj = CWPPNPlaceView::Create(str);
+
+	if (!obj)
+		obj = CWPPNTransView::Create(str);
+
+	if (!obj)
+		obj = CWPPNArcView::Create(str);
+
+	return obj;
+}
+
+void CWPPNControlFactory::GetEntityTypes(CStringArray& typeList)
+{
+	// Clear the list
+	typeList.RemoveAll();
+	// Add block types
+	CDiagramEntity* obj = new CWPPNPlaceView;
+	typeList.Add(obj->GetType());
+	delete obj;
+	// Add edge types
+	obj = new CWPPNTransView;
+	typeList.Add(obj->GetType());
+	delete obj;
+	// Add label types
+	obj = new CWPPNArcView;
+	typeList.Add(obj->GetType());
+	delete obj;
+}

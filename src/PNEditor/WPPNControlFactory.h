@@ -20,6 +20,8 @@ public:
 	virtual CDiagramEntity* CreateViewFromString(const CString& str);
 	virtual CDiagramEntity* CreateViewFromString(const CString& str, CProMoModel* model);
 	virtual CProMoModel* CreateModelFromString(const CString& str);
+	virtual CDiagramEntity* CreateNewEntity(const CString& str);
+	virtual void GetEntityTypes(CStringArray& typeList);
 
 };
 

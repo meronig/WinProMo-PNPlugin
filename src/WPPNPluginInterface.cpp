@@ -90,12 +90,7 @@ CProMoCmdHandler* CWPPNPluginInterface::GetCmdHandler()
 
 CProMoEntityContainer* CWPPNPluginInterface::GetContainer()
 {
-    return new CProMoEntityContainer("pnPlugin");
-}
-
-CProMoControlFactory* CWPPNPluginInterface::GetControlFactory()
-{
-    return new CWPPNControlFactory;
+    return new CProMoEntityContainer(new CWPPNControlFactory, "pnPlugin");
 }
 
 CProMoRenderer* CWPPNPluginInterface::GetRenderer()

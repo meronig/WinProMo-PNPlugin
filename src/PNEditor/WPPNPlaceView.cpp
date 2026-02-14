@@ -68,3 +68,14 @@ CDiagramEntity* CWPPNPlaceView::CreateFromString(const CString& str, CProMoModel
     return obj;
 
 }
+
+CDiagramEntity* CWPPNPlaceView::Create(const CString& str)
+{
+    CWPPNPlaceView* obj = new CWPPNPlaceView;
+    if (!obj->HasType(str))
+    {
+        delete obj;
+        obj = NULL;
+    }
+    return obj;
+}

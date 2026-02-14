@@ -21,9 +21,11 @@ public:
     virtual CDiagramEntity* Clone();
     static CDiagramEntity* CreateFromString(const CString& str);
     static	CDiagramEntity* CreateFromString(const CString& str, CProMoModel* model);
+    static CDiagramEntity* Create(const CString& str);
+
 
 protected:
-    virtual void DrawLine(CDC* dc, CRect rect);
+    virtual void DrawTail(CDC* dc, CRect rect, double size);
 
 };
 

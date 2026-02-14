@@ -65,3 +65,14 @@ CDiagramEntity* CWPPNTransView::CreateFromString(const CString& str, CProMoModel
 	return obj;
 
 }
+
+CDiagramEntity* CWPPNTransView::Create(const CString& str)
+{
+	CWPPNTransView* obj = new CWPPNTransView;
+	if (!obj->HasType(str))
+	{
+		delete obj;
+		obj = NULL;
+	}
+	return obj;
+}

@@ -22,6 +22,7 @@ public:
 
     static CDiagramEntity* CreateFromString(const CString& str);
     static CDiagramEntity* CreateFromString(const CString& str, CProMoModel* model);
+    static CDiagramEntity* Create(const CString& str);
 
 };
 
