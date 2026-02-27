@@ -35,8 +35,8 @@ NULL=nul
 # Begin Project
 # PROP Target_Last_Scanned "WPPNPlugin - Win32 Debug"
 CPP=cl.exe
-MTL=mktyplib.exe
 RSC=rc.exe
+MTL=mktyplib.exe
 
 !IF  "$(CFG)" == "WPPNPlugin - Win32 Release"
 
@@ -263,6 +263,43 @@ SOURCE=.\ReadMe.txt
 # Begin Source File
 
 SOURCE=.\WPPNPlugin.cpp
+
+!IF  "$(CFG)" == "WPPNPlugin - Win32 Release"
+
+DEP_CPP_WPPNP=\
+	"..\..\WinProMo\src\Automation\ProMoAutomationHost.h"\
+	"..\..\WinProMo\src\DiagramEditor\DiagramClipboardHandler.h"\
+	"..\..\WinProMo\src\DiagramEditor\DiagramEntity.h"\
+	"..\..\WinProMo\src\DiagramEditor\DiagramEntityContainer.h"\
+	"..\..\WinProMo\src\DiagramEditor\DiagramPropertyDlg.h"\
+	"..\..\WinProMo\src\DiagramEditor\Tokenizer.h"\
+	"..\..\WinProMo\src\DiagramEditor\UndoItem.h"\
+	"..\..\WinProMo\src\FileUtils\VariantWrapper.h"\
+	"..\..\WinProMo\src\GeometryUtils\DoublePoint.h"\
+	"..\..\WinProMo\src\GeometryUtils\DoubleRect.h"\
+	"..\..\WinProMo\src\ProMoEditor\ProMoBlockModel.h"\
+	"..\..\WinProMo\src\ProMoEditor\ProMoBlockView.h"\
+	"..\..\WinProMo\src\ProMoEditor\ProMoClipboardHandler.h"\
+	"..\..\WinProMo\src\ProMoEditor\ProMoControlFactory.h"\
+	"..\..\WinProMo\src\ProMoEditor\ProMoEntity.h"\
+	"..\..\WinProMo\src\ProMoEditor\ProMoEntityContainer.h"\
+	"..\..\WinProMo\src\ProMoEditor\ProMoLabel.h"\
+	"..\..\WinProMo\src\ProMoEditor\ProMoModel.h"\
+	"..\..\WinProMo\src\ProMoEditor\ProMoProperty.h"\
+	"..\..\WinProMo\src\ProMoEditor\ProMoPropertyOwner.h"\
+	"..\..\WinProMo\src\ProMoEditor\ProMoView.h"\
+	"..\..\WinProMo\src\StdAfx.h"\
+	"..\..\WinProMo\src\WinProMoPluginInterface.h"\
+	".\StdAfx.h"\
+	".\WPPNPluginInterface.h"\
+	
+
+"$(INTDIR)\WPPNPlugin.obj" : $(SOURCE) $(DEP_CPP_WPPNP) "$(INTDIR)"\
+ "$(INTDIR)\WPPNPlugin.pch"
+
+
+!ELSEIF  "$(CFG)" == "WPPNPlugin - Win32 Debug"
+
 DEP_CPP_WPPNP=\
 	"..\..\WinProMo\src\Automation\ProMoAutomationHost.h"\
 	"..\..\WinProMo\src\DiagramEditor\DiagramClipboardHandler.h"\
@@ -305,6 +342,8 @@ DEP_CPP_WPPNP=\
 "$(INTDIR)\WPPNPlugin.obj" : $(SOURCE) $(DEP_CPP_WPPNP) "$(INTDIR)"\
  "$(INTDIR)\WPPNPlugin.pch"
 
+
+!ENDIF 
 
 # End Source File
 ################################################################################
@@ -368,6 +407,55 @@ DEP_RSC_WPPNPL=\
 # Begin Source File
 
 SOURCE=.\WPPNPluginInterface.cpp
+
+!IF  "$(CFG)" == "WPPNPlugin - Win32 Release"
+
+DEP_CPP_WPPNPLU=\
+	"..\..\WinProMo\src\Automation\ProMoAutomationHost.h"\
+	"..\..\WinProMo\src\DiagramEditor\DiagramClipboardHandler.h"\
+	"..\..\WinProMo\src\DiagramEditor\DiagramEditor.h"\
+	"..\..\WinProMo\src\DiagramEditor\DiagramEntity.h"\
+	"..\..\WinProMo\src\DiagramEditor\DiagramEntityContainer.h"\
+	"..\..\WinProMo\src\DiagramEditor\DiagramLine.h"\
+	"..\..\WinProMo\src\DiagramEditor\DiagramMenu.h"\
+	"..\..\WinProMo\src\DiagramEditor\DiagramPropertyDlg.h"\
+	"..\..\WinProMo\src\DiagramEditor\HitParams.h"\
+	"..\..\WinProMo\src\DiagramEditor\HitParamsRect.h"\
+	"..\..\WinProMo\src\DiagramEditor\Tokenizer.h"\
+	"..\..\WinProMo\src\DiagramEditor\UndoItem.h"\
+	"..\..\WinProMo\src\FileUtils\VariantWrapper.h"\
+	"..\..\WinProMo\src\GeometryUtils\DoublePoint.h"\
+	"..\..\WinProMo\src\GeometryUtils\DoubleRect.h"\
+	"..\..\WinProMo\src\GeometryUtils\GeometryHelper.h"\
+	"..\..\WinProMo\src\ProMoEditor\ProMoBlockModel.h"\
+	"..\..\WinProMo\src\ProMoEditor\ProMoBlockView.h"\
+	"..\..\WinProMo\src\ProMoEditor\ProMoClipboardHandler.h"\
+	"..\..\WinProMo\src\ProMoEditor\ProMoCmdHandler.h"\
+	"..\..\WinProMo\src\ProMoEditor\ProMoControlFactory.h"\
+	"..\..\WinProMo\src\ProMoEditor\ProMoEdgeView.h"\
+	"..\..\WinProMo\src\ProMoEditor\ProMoEditor.h"\
+	"..\..\WinProMo\src\ProMoEditor\ProMoEntity.h"\
+	"..\..\WinProMo\src\ProMoEditor\ProMoEntityContainer.h"\
+	"..\..\WinProMo\src\ProMoEditor\ProMoLabel.h"\
+	"..\..\WinProMo\src\ProMoEditor\ProMoModel.h"\
+	"..\..\WinProMo\src\ProMoEditor\ProMoProperty.h"\
+	"..\..\WinProMo\src\ProMoEditor\ProMoPropertyOwner.h"\
+	"..\..\WinProMo\src\ProMoEditor\ProMoView.h"\
+	"..\..\WinProMo\src\StdAfx.h"\
+	"..\..\WinProMo\src\WinProMoPluginInterface.h"\
+	".\PNEditor\WPPNControlFactory.h"\
+	".\PNEditor\WPPNEditor.h"\
+	".\StdAfx.h"\
+	".\WPPNCmdHandler.h"\
+	".\WPPNPluginInterface.h"\
+	
+
+"$(INTDIR)\WPPNPluginInterface.obj" : $(SOURCE) $(DEP_CPP_WPPNPLU) "$(INTDIR)"\
+ "$(INTDIR)\WPPNPlugin.pch"
+
+
+!ELSEIF  "$(CFG)" == "WPPNPlugin - Win32 Debug"
+
 DEP_CPP_WPPNPLU=\
 	"..\..\WinProMo\src\Automation\ProMoAutomationHost.h"\
 	"..\..\WinProMo\src\DiagramEditor\DiagramClipboardHandler.h"\
@@ -413,6 +501,8 @@ DEP_CPP_WPPNPLU=\
 "$(INTDIR)\WPPNPluginInterface.obj" : $(SOURCE) $(DEP_CPP_WPPNPLU) "$(INTDIR)"\
  "$(INTDIR)\WPPNPlugin.pch"
 
+
+!ENDIF 
 
 # End Source File
 ################################################################################
