@@ -5,8 +5,8 @@
 	Author :		Giovanni Meroni
 
    ========================================================================*/
-#ifndef _PNEDITOR_H_
-#define _PNEDITOR_H_
+#ifndef _WPPNEDITOR_H_
+#define _WPPNEDITOR_H_
 
 #include "../../../WinProMo/src/ProMoEditor/ProMoEditor.h"
 class AFX_EXT_CLASS CWPPNEditor :
@@ -19,5 +19,5 @@ public:
 
 };
 
-#endif
+#endif //_WPPNEDITOR_H_
 

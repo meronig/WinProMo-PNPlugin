@@ -206,7 +206,7 @@
     <ClCompile Include="PNEditor\WPPNArcView.cpp" />
     <ClCompile Include="PNEditor\WPPNPlaceView.cpp" />
     <ClCompile Include="PNEditor\WPPNControlFactory.cpp" />
-    <ClCompile Include="WPPNCmdHandler.cpp" />
+    <ClCompile Include="PNEditor\WPPNCmdHandler.cpp" />
     <ClCompile Include="WPPNPluginInterface.cpp" />
     <ClCompile Include="PNEditor\WPPNEditor.cpp" />
     <ClCompile Include="WPPNPlugin.cpp" />
@@ -223,7 +223,7 @@
     <ClInclude Include="PNEditor\WPPNArcView.h" />
     <ClInclude Include="PNEditor\WPPNPlaceView.h" />
     <ClInclude Include="PNEditor\WPPNControlFactory.h" />
-    <ClInclude Include="WPPNCmdHandler.h" />
+    <ClInclude Include="PNEditor\WPPNCmdHandler.h" />
     <ClInclude Include="WPPNPluginInterface.h" />
     <ClInclude Include="PNEditor\WPPNEditor.h" />
     <ClInclude Include="PNEditor\WPPNTransModel.h" />

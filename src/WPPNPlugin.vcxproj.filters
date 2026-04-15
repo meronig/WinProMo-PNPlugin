@@ -48,7 +48,7 @@
     <ClCompile Include="PNEditor\WPPNControlFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WPPNCmdHandler.cpp">
+    <ClCompile Include="PNEditor\WPPNCmdHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -91,7 +91,7 @@
     <ClInclude Include="PNEditor\WPPNControlFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WPPNCmdHandler.h">
+    <ClInclude Include="PNEditor\WPPNCmdHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,6 +1,6 @@
 /* ==========================================================================
 
-	Copyright © 2025 Technical University of Denmark
+	Copyright © 2025-26 Technical University of Denmark
 
 	Author :		Giovanni Meroni
 
@@ -8,15 +8,13 @@
 #ifndef _WPPNCOMMANDHANDLER_H_
 #define _WPPNCOMMANDHANDLER_H_
 
-#include "../../WinProMo/src/ProMoEditor/ProMoCmdHandler.h"
-#include "PNEditor/WPPNEditor.h"
+#include "../../../WinProMo/src/ProMoEditor/ProMoCmdHandler.h"
 
 class AFX_EXT_CLASS CWPPNCmdHandler :
     public CProMoCmdHandler
 {
 public:
 	CWPPNCmdHandler();
-    virtual ~CWPPNCmdHandler();
 
 	virtual void OnInsertPlace();
 	virtual void OnUpdateInsertPlace(CCmdUI* pCmdUI);
@@ -26,13 +24,9 @@ public:
 	virtual void OnUpdateInsertArc(CCmdUI* pCmdUI);
 
 
-	//overrides
+	//implements
 	virtual BOOL OnPluginCommand(UINT cmdID);
 	virtual BOOL OnPluginUpdateCommandUI(CCmdUI* pCmdUI);
-	virtual CProMoEditor* GetEditor();
-
-private:
-	CWPPNEditor* m_editor;
 
 };
 
